@@ -52,4 +52,28 @@ AK`MA`ME`NY
 Black`White
 Small
 The Dovekie looks like a small version of a Penguin. They have a short and stubby bill. No other Atlantic alcid is as small and has such a tiny bill.
+Emperor Goose
+Anatidae
+AK
+Black`White`Orange`Brown
+Medium
+The Emperor Goose is a species of goose. It breeds around the Bering Sea, mostly in Alaska, USA, but also in Kamchatka, Russia.
+Fork-tailed Storm Petrel
+Hydrobatidae
+AK`CA
+Black`Gray`Blue
+Small
+The Fork-tailed Storm Petrel is a small seabird of the storm-petrel family Hydrobatidae.
+Greater Scaup
+Anatidae
+AK
+Gray`Brown`White`Black
+Medium
+The Greater Scaup, just Scaup in Europe, or colloquially "Bluebill" in North America for its bright blue bill, is a mid-sized diving duck though it is larger than the closely related Lesser Scaup.
+Horned Puffin
+Alcidae
+AK
+Black`White`Orange
+Small
+The Horned Puffin is an auk, similar in appearance to the Atlantic Puffin; this bird's bill is yellow at the base and red at the tip.
 
