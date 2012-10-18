@@ -1,0 +1,31 @@
+Whooping Crane
+Cranes
+NM`TX`ID
+White
+Very large
+The Whooping Crane's name comes from the sound of its call. A group of Whooping Cranes are called a swoop.
+Yellow Rail
+Rails
+ND`MN`TX`LA`MS`AL`FL`GA`SC
+Yellow`Black`White
+Small
+The Yellow Rail lives in marshes. It is very elusive and thus infrequently sighted.
+Upland Sandpiper
+Sandpipers
+MT`ND`SD`MI`MN`WI`NE`IA`KS`OH`PA`MO`IL`IN
+Brown`Tan
+Medium
+Unlike other birds of the same family, the Upland Sandpiper does not reside near water. It forages for small bugs in grassy fields and open plains.
+Wrentit
+Old World Warblers
+CA`OR
+Grey`Brown
+Very Small
+The Wrentit cannot easily be classified with other North American birds. Wrentit males and females sing to ward off enemies from their nest, and they mate for life.
+Veery
+Thrushes
+WA`ID`MT`ND`MN`WI`MI`PA`NY`ME`MD`MA`NJ`WV
+Brown`White`Tan
+Medium
+The Veery prefer damp, dense forests for breeding grounds. They can fly as far as 160 miles at a time and at altitudes exceeding 1.2 miles.
+
