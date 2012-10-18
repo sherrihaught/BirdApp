@@ -28,4 +28,28 @@ WA`ID`MT`ND`MN`WI`MI`PA`NY`ME`MD`MA`NJ`WV
 Brown`White`Tan
 Medium
 The Veery prefer damp, dense forests for breeding grounds. They can fly as far as 160 miles at a time and at altitudes exceeding 1.2 miles.
+Akikiki
+Fringillidae
+HI
+Gray`Brown`White
+Small
+The Akikiki is critically endangered due to disease and multiple predators. It can be found along the Alaka'i Swamp Trail.
+Blue-Footed Booby
+Sulidae
+CA`TX
+Black`White`Gray`Blue
+Large
+The female and male Blue-Footed Booby look the same. They have various Colors throughout their body and bright blue feet. The Booby bird has no nest, it mates on land and lays eggs on the ground.
+Couch's Kingbird
+Tyrannidae
+TX
+Yellow`Brown`Gray
+Medium
+The Couch's Kingbird is known as a flycatcher bird. It has been confused with the Tropical Kingbird but can be separated by their voices.
+Dovekie
+Alcadie
+AK`MA`ME`NY
+Black`White
+Small
+The Dovekie looks like a small version of a Penguin. They have a short and stubby bill. No other Atlantic alcid is as small and has such a tiny bill.
 
