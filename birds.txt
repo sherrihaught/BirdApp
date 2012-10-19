@@ -76,4 +76,27 @@ AK
 Black`White`Orange
 Small
 The Horned Puffin is an auk, similar in appearance to the Atlantic Puffin; this bird's bill is yellow at the base and red at the tip.
-
+Ivory Gull
+Laridae
+AK
+White
+Small
+A bird of the arctic, its snow color reflects its habitat of the cold north.
+Juniper Titmouse
+Paridae
+CA`CO`UT
+Gray
+Small
+The bird carries multiple shades of gray amongst its feathers.
+Kirtland's Warbler
+Parulidae
+MI
+Black`Yellow
+Small
+The songbird's tuft has a large streak of yellow, which lines with its black back.
+Lana'i Hookbill
+Fringillidae
+HI
+Green`Gray
+Small
+However extinct, the tinge of green on the belly of the bird was once seen as a majestic sight.
