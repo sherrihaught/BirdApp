@@ -33,13 +33,13 @@ public class DataManager {
 		while (inputFile.hasNextLine())
 		{
 			birds.add(new Bird(
-					inputFile.nextLine(), 
-					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-					inputFile.nextLine(), 
-					inputFile.nextLine()
-					));
+				inputFile.nextLine(), 
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+				inputFile.nextLine(), 
+				inputFile.nextLine()
+				));
 		}
 	}
 }
