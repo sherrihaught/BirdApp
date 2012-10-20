@@ -64,7 +64,28 @@ public class Bird {
 		this.size = size;
 	}
 	
-	public void getDescription(String description){
+	public void setDescription(String description){
 		this.description = description;
+	}
+
+// toString function created in order to test the DataManager by printing to output
+	public String toString(){
+		String holder = new String();
+		
+		holder = name + "\n";
+		for (int i = 0; i < families.size(); i++){
+			holder += families.get(i) + ", ";
+		}
+		holder += "\n";
+		for (int i = 0; i < colors.size(); i++){
+			holder += colors.get(i) + ", ";
+		}
+		holder += "\n";
+		for (int i = 0; i < locations.size(); i++){
+			holder += locations.get(i) + ", ";
+		}
+		holder += "\n" + size + "\n" + description + "\n";
+		
+		return holder;
 	}
 }
