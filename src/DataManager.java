@@ -1,9 +1,12 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class DataManager {
 	private ArrayList<Bird> birds;
 
-	public DataManager(String fileName){
+	public DataManager(String fileName) throws FileNotFoundException{
+		birds = new ArrayList<Bird>();
 		addBirds(fileName);
 	}
 	
@@ -24,7 +27,19 @@ public class DataManager {
 		return subset;
 	}
 	
-	public void addBirds(String fileName){
-		//read from file, creating new Birds and adding them to birds
+	public void addBirds(String fileName) throws FileNotFoundException{
+		//read from file 6 lines at a time, creating new Birds and adding them to birds
+		Scanner inputFile = new Scanner(new File(fileName));
+		while (inputFile.hasNextLine())
+		{
+			birds.add(new Bird(
+					inputFile.nextLine(), 
+					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+					new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
+					inputFile.nextLine(), 
+					inputFile.nextLine()
+					));
+		}
 	}
 }
