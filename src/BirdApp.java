@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class BirdApp{
 	public JFrame background;
@@ -7,9 +9,17 @@ public class BirdApp{
 	public BirdApp(){
 	}
 	
-	public static void main(String args[]){
+	public static void main(String args[]) throws FileNotFoundException{
 		BirdApp b = new BirdApp();
 		Canvas canvas = b.setBackground();
+		
+		
+		// DataManager tested by printing to output using Bird's toString-- comment to not run.
+		DataManager test = new DataManager("birds.txt");
+		ArrayList<Bird> testList = test.getBirds();
+		for (int i = 0; i < testList.size(); i++){
+			System.out.println(testList.get(i).toString());
+		}
 	}
 	
 	public Canvas setBackground(){
