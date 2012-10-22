@@ -52,6 +52,15 @@ public class DataManager {
 		return subset;
 	}
 	
+	public ArrayList<Bird> getBirdsByFamily(String family){
+		ArrayList<Bird> subset = new ArrayList<Bird>();
+		for(int i=0;i<birds.size();i++){
+			if(birds.get(i).getFamilies().contains(family))
+				subset.add(birds.get(i));
+		}
+		return subset;
+	}
+	
 	public ArrayList<Bird> getBirdsByLocation(String location){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birds.size();i++){
