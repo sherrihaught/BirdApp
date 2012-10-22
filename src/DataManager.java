@@ -14,8 +14,31 @@ public class DataManager {
 		return birds;
 	}
 	
+	public ArrayList<Bird> getReverseOrder(){
+		ArrayList<Bird> reverse = birds;
+		Collections.reverse(reverse);
+		return reverse;
+	}
+	
+	public ArrayList<Bird> getSortedByName(){
+		ArrayList<Bird> sorted = birds;
+		Collections.sort(sorted,new CompareName());
+		return sorted;
+	}
+	
+	public ArrayList<Bird> getSortedBySize(){
+		ArrayList<Bird> sorted = birds;
+		Collections.sort(sorted,new CompareSize());
+		return sorted;
+	}
+	
+	//I think the best way to do this would be to have separate categories for each instead of what's below
 	public ArrayList<Bird> getSortedBirds(String sortCategory){
 		ArrayList<Bird> sorted = birds;
+		if(sortCategory.equals("Name"))
+			Collections.sort(birds,new CompareName());
+		else if(sortCategory.equals("Size"))
+			Collections.sort(birds,new CompareSize());
 		//sort sorted based on given sortCategory
 		return sorted;
 	}
@@ -41,5 +64,40 @@ public class DataManager {
 				inputFile.nextLine()
 				));
 		}
+		inputFile.close();
+	}
+}
+
+class CompareName implements Comparator<Bird>{
+
+	@Override
+	public int compare(Bird one, Bird two) {
+		return one.getName().compareTo(two.getName());
+	}
+}
+
+class CompareSize implements Comparator<Bird>{
+
+	@Override
+	public int compare(Bird one, Bird two) {
+		if(getSizeNumber(one.getSize())<getSizeNumber(two.getSize()))
+			return -1;
+		else if(getSizeNumber(one.getSize())==getSizeNumber(two.getSize()))
+			return 0;
+		else
+			return 1;
+	}
+	
+	private int getSizeNumber(String size){
+		if(size.equals("Very Small"))
+			return 1;
+		else if(size.equals("Small"))
+			return 2;
+		else if(size.equals("Medium"))
+			return 3;
+		else if(size.equals("Large"))
+			return 4;
+		else
+			return 5;
 	}
 }
