@@ -43,6 +43,15 @@ public class DataManager {
 		return sorted;
 	}
 	
+	public ArrayList<Bird> getBirdsByColor(String color){
+		ArrayList<Bird> subset = new ArrayList<Bird>();
+		for(int i=0;i<birds.size();i++){
+			if(birds.get(i).getColors().contains(color))
+				subset.add(birds.get(i));
+		}
+		return subset;
+	}
+	
 	public ArrayList<Bird> getSubsetBirds(String searchCategory, String searchValue){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		//search through birds based on searchCategory
