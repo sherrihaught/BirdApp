@@ -52,6 +52,15 @@ public class DataManager {
 		return subset;
 	}
 	
+	public ArrayList<Bird> getBirdsByLocation(String location){
+		ArrayList<Bird> subset = new ArrayList<Bird>();
+		for(int i=0;i<birds.size();i++){
+			if(birds.get(i).getLocations().contains(location))
+				subset.add(birds.get(i));
+		}
+		return subset;
+	}
+	
 	public ArrayList<Bird> getSubsetBirds(String searchCategory, String searchValue){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		//search through birds based on searchCategory
