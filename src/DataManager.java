@@ -4,6 +4,7 @@ import java.util.*;
 
 public class DataManager {
 	private ArrayList<Bird> birds;
+	private ArrayList<Bird> birdSearchSubset;
 
 	public DataManager(String fileName) throws FileNotFoundException{
 		birds = new ArrayList<Bird>();
@@ -45,36 +46,74 @@ public class DataManager {
 	
 	public ArrayList<Bird> getBirdsByColor(String color){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
-		for(int i=0;i<birds.size();i++){
-			if(birds.get(i).getColors().contains(color))
-				subset.add(birds.get(i));
+		for(int i=0;i<birdSearchSubset.size();i++){
+			if(birdSearchSubset.get(i).getColors().contains(color))
+				subset.add(birdSearchSubset.get(i));
 		}
 		return subset;
 	}
 	
 	public ArrayList<Bird> getBirdsByFamily(String family){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
-		for(int i=0;i<birds.size();i++){
-			if(birds.get(i).getFamilies().contains(family))
-				subset.add(birds.get(i));
+		for(int i=0;i<birdSearchSubset.size();i++){
+			if(birdSearchSubset.get(i).getFamilies().contains(family))
+				subset.add(birdSearchSubset.get(i));
 		}
 		return subset;
 	}
 	
 	public ArrayList<Bird> getBirdsByLocation(String location){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
-		for(int i=0;i<birds.size();i++){
-			if(birds.get(i).getLocations().contains(location))
-				subset.add(birds.get(i));
+		for(int i=0;i<birdSearchSubset.size();i++){
+			if(birdSearchSubset.get(i).getLocations().contains(location))
+				subset.add(birdSearchSubset.get(i));
 		}
 		return subset;
 	}
 	
-	public ArrayList<Bird> getSubsetBirds(String searchCategory, String searchValue){
+	public ArrayList<Bird> getBirdsByName(String name){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
-		//search through birds based on searchCategory
-		//if Bird has searchValue, add to subset
+		for(int i=0;i<birdSearchSubset.size();i++){
+			if(birdSearchSubset.get(i).getName().matches(name))
+				subset.add(birdSearchSubset.get(i));
+		}
 		return subset;
+	}
+	
+	public ArrayList<Bird> getBirdsBySize(String size){
+		ArrayList<Bird> subset = new ArrayList<Bird>();
+		for(int i=0;i<birdSearchSubset.size();i++){
+			if(birdSearchSubset.get(i).getSize().matches(size))
+				subset.add(birdSearchSubset.get(i));
+		}
+		return subset;
+	}
+	
+	// search through birds based on one of five search categories
+	// search category is allowed to be empty
+	public void getSubsetBirds(String searchName, String searchFamily, String searchColor, 
+			String searchSize, String searchLocation){
+		birdSearchSubset = birds;
+		
+		if (searchLocation != ""){
+		birdSearchSubset = getBirdsByLocation(searchLocation);
+		}
+		if (searchFamily != ""){
+		birdSearchSubset = getBirdsByFamily(searchFamily);
+		}
+		if (searchColor != ""){
+		birdSearchSubset = getBirdsByColor(searchColor);
+		}
+		if (searchName != ""){
+		birdSearchSubset = getBirdsByName(searchName);
+		}
+		if (searchSize != ""){
+		birdSearchSubset = getBirdsBySize(searchSize);
+		}
+	}
+	
+	public ArrayList<Bird> getSearchSubset(){
+		return birdSearchSubset;
 	}
 	
 	public void addBirds(String fileName) throws FileNotFoundException{
@@ -89,7 +128,8 @@ public class DataManager {
 				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
 				inputFile.nextLine(), 
 				inputFile.nextLine()
-				));
+				)
+			);
 		}
 		inputFile.close();
 	}
