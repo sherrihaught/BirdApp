@@ -33,18 +33,25 @@ public class DataManager {
 		return sorted;
 	}
 	
-	//I think the best way to do this would be to have separate categories for each instead of what's below
-	public ArrayList<Bird> getSortedBirds(String sortCategory){
+	public ArrayList<Bird> getSortedByColor(){
 		ArrayList<Bird> sorted = birds;
-		if(sortCategory.equals("Name"))
-			Collections.sort(birds,new CompareName());
-		else if(sortCategory.equals("Size"))
-			Collections.sort(birds,new CompareSize());
-		//sort sorted based on given sortCategory
+		Collections.sort(sorted,new CompareColor());
 		return sorted;
 	}
 	
-	public ArrayList<Bird> getBirdsByColor(String color){
+	public ArrayList<Bird> getSortedByFamily(){
+		ArrayList<Bird> sorted = birds;
+		Collections.sort(sorted,new CompareFamily());
+		return sorted;
+	}
+	
+	public ArrayList<Bird> getSortedByLocation(){
+		ArrayList<Bird> sorted = birds;
+		Collections.sort(sorted,new CompareLocation());
+		return sorted;
+	}
+	
+	private ArrayList<Bird> getBirdsByColor(String color){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
 			if(birdSearchSubset.get(i).getColors().contains(color))
@@ -53,7 +60,7 @@ public class DataManager {
 		return subset;
 	}
 	
-	public ArrayList<Bird> getBirdsByFamily(String family){
+	private ArrayList<Bird> getBirdsByFamily(String family){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
 			if(birdSearchSubset.get(i).getFamilies().contains(family))
@@ -62,7 +69,7 @@ public class DataManager {
 		return subset;
 	}
 	
-	public ArrayList<Bird> getBirdsByLocation(String location){
+	private ArrayList<Bird> getBirdsByLocation(String location){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
 			if(birdSearchSubset.get(i).getLocations().contains(location))
@@ -71,7 +78,7 @@ public class DataManager {
 		return subset;
 	}
 	
-	public ArrayList<Bird> getBirdsByName(String name){
+	private ArrayList<Bird> getBirdsByName(String name){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
 			if(birdSearchSubset.get(i).getName().matches(name))
@@ -80,7 +87,7 @@ public class DataManager {
 		return subset;
 	}
 	
-	public ArrayList<Bird> getBirdsBySize(String size){
+	private ArrayList<Bird> getBirdsBySize(String size){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
 			if(birdSearchSubset.get(i).getSize().matches(size))
@@ -89,29 +96,41 @@ public class DataManager {
 		return subset;
 	}
 	
-	// search through birds based on one of five search categories
-	// search category is allowed to be empty
-	public void getSubsetBirds(String searchName, String searchFamily, String searchColor, 
-			String searchSize, String searchLocation){
+	/**
+	 * Search through birds by categories, any blank categories will be ignored. 
+	 * @param searchName Search by name, done with regular expression and can be a partial name
+	 * @param searchFamily Search by family, full family names only
+	 * @param searchColor Search by color, full color names only
+	 * @param searchSize Search by size, full sizes only
+	 * @param searchLocation Seach by location, full locations only
+	 * @return An ArrayList of Bird objects that is 
+	 */
+	public ArrayList<Bird> getSubsetBirds(String searchName, String searchFamily, String searchColor, 
+		String searchSize, String searchLocation){
 		birdSearchSubset = birds;
 		
-		if (searchLocation != ""){
-		birdSearchSubset = getBirdsByLocation(searchLocation);
+		if (!searchLocation.equals("")){
+			birdSearchSubset = getBirdsByLocation(searchLocation);
 		}
-		if (searchFamily != ""){
-		birdSearchSubset = getBirdsByFamily(searchFamily);
+		if (!searchFamily.equals("")){
+			birdSearchSubset = getBirdsByFamily(searchFamily);
 		}
-		if (searchColor != ""){
-		birdSearchSubset = getBirdsByColor(searchColor);
+		if (!searchColor.equals("")){
+			birdSearchSubset = getBirdsByColor(searchColor);
 		}
-		if (searchName != ""){
-		birdSearchSubset = getBirdsByName(searchName);
+		if (!searchName.equals("")){
+			birdSearchSubset = getBirdsByName(searchName);
 		}
-		if (searchSize != ""){
-		birdSearchSubset = getBirdsBySize(searchSize);
+		if (!searchSize.equals("")){
+			birdSearchSubset = getBirdsBySize(searchSize);
 		}
+		return birdSearchSubset;
 	}
 	
+	/**
+	 * Returns the ArrayList of Birds that was returned via the function getSubsetBirds.
+	 * @return Searched ArrayList of Bird objects.
+	 */
 	public ArrayList<Bird> getSearchSubset(){
 		return birdSearchSubset;
 	}
@@ -122,14 +141,18 @@ public class DataManager {
 		while (inputFile.hasNextLine())
 		{
 			birds.add(new Bird(
-				inputFile.nextLine(), 
-				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 
-				inputFile.nextLine(), 
-				inputFile.nextLine()
+				inputFile.nextLine(),													//Name
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 	//Families
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 	//Colors
+				new ArrayList<String>(Arrays.asList(inputFile.nextLine().split("`"))), 	//Locations
+				inputFile.nextLine(), 													//Size
+				inputFile.nextLine()													//Description
 				)
 			);
+			//Alphabetically organizes the Locations, Colors, and Families
+			Collections.sort(birds.get(birds.size()-1).getLocations(), new CompareString());
+			Collections.sort(birds.get(birds.size()-1).getColors(), new CompareString());
+			Collections.sort(birds.get(birds.size()-1).getFamilies(), new CompareString());
 		}
 		inputFile.close();
 	}
@@ -140,6 +163,38 @@ class CompareName implements Comparator<Bird>{
 	@Override
 	public int compare(Bird one, Bird two) {
 		return one.getName().compareTo(two.getName());
+	}
+}
+
+class CompareColor implements Comparator<Bird>{
+
+	@Override
+	public int compare(Bird one, Bird two) {
+		return one.getColors().get(0).compareTo(two.getColors().get(0));
+	}
+}
+
+class CompareFamily implements Comparator<Bird>{
+
+	@Override
+	public int compare(Bird one, Bird two) {
+		return one.getFamilies().get(0).compareTo(two.getFamilies().get(0));
+	}
+}
+
+class CompareLocation implements Comparator<Bird>{
+
+	@Override
+	public int compare(Bird one, Bird two) {
+		return one.getLocations().get(0).compareTo(two.getLocations().get(0));
+	}
+}
+
+class CompareString implements Comparator<String>{
+
+	@Override
+	public int compare(String one, String two) {
+		return one.compareTo(two);
 	}
 }
 
