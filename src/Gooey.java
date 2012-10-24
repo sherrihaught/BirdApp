@@ -1,14 +1,19 @@
 import javax.swing.JFrame;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Gooey {
+public class Gooey{
 	private static JFrame frame;
 	private static Canvas canvas;
 	private static DataManager dm;
 	
 	public static void main(String args[]){
-		dm = new DataManager("birds.txt");
+		try{
+            dm = new DataManager("birds.txt");
+        }catch (FileNotFoundException e){
+            dm = new DataManager();
+        }
 		createScreen();
 		displayBirds(dm.getBirds());
 		frame.setVisible(true);
@@ -19,9 +24,9 @@ public class Gooey {
 		displayBirds(dm.getSortedBirds(sortCategory));
 	}
 	
-	public static void search(String searchCategory, String searchValue){
-		displayBirds(dm.getSubsetBirds(searchCategory, searchValue));
-	}
+	//public static void search(String searchCategory, String searchValue){
+	//	displayBirds(dm.getSubsetBirds(searchCategory, searchValue));
+	//}
 	
 	private static void createScreen(){
 		Dimension currScreen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

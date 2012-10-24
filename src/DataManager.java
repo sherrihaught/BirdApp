@@ -5,6 +5,10 @@ import java.util.*;
 public class DataManager {
 	private ArrayList<Bird> birds;
 	private ArrayList<Bird> birdSearchSubset;
+	
+	public DataManager(){
+		birds = new ArrayList<Bird>();
+	}
 
 	public DataManager(String fileName) throws FileNotFoundException{
 		birds = new ArrayList<Bird>();
@@ -21,36 +25,51 @@ public class DataManager {
 		return reverse;
 	}
 	
-	public ArrayList<Bird> getSortedByName(){
+	/**Sorts the Bird objects by the specified sortCategory
+	 * @param sortCategory string representing sort criteria
+	 * @return a sorted ArrayList of Bird objects
+	 */
+	public ArrayList<Bird> getSortedBirds(String sortCategory){
 		ArrayList<Bird> sorted = birds;
+		if(sortCategory == "name"){
+			sorted = getSortedByName(sorted);
+		}else if(sortCategory == "family"){
+			sorted = getSortedByFamily(sorted);
+		}else if(sortCategory == "location"){
+			sorted= getSortedByLocation(sorted);
+		}else if(sortCategory == "color"){
+			sorted = getSortedByColor(sorted);
+		}else if(sortCategory == "size"){
+			sorted = getSortedBySize(sorted);
+		}
+		return sorted;
+	}
+	
+	private ArrayList<Bird> getSortedByName(ArrayList<Bird> sorted){
 		Collections.sort(sorted,new CompareName());
 		return sorted;
 	}
 	
-	public ArrayList<Bird> getSortedBySize(){
-		ArrayList<Bird> sorted = birds;
-		Collections.sort(sorted,new CompareSize());
-		return sorted;
-	}
-	
-	public ArrayList<Bird> getSortedByColor(){
-		ArrayList<Bird> sorted = birds;
-		Collections.sort(sorted,new CompareColor());
-		return sorted;
-	}
-	
-	public ArrayList<Bird> getSortedByFamily(){
-		ArrayList<Bird> sorted = birds;
+	private ArrayList<Bird> getSortedByFamily(ArrayList<Bird> sorted){
 		Collections.sort(sorted,new CompareFamily());
 		return sorted;
 	}
 	
-	public ArrayList<Bird> getSortedByLocation(){
-		ArrayList<Bird> sorted = birds;
+	private ArrayList<Bird> getSortedByLocation(ArrayList<Bird> sorted){
 		Collections.sort(sorted,new CompareLocation());
 		return sorted;
 	}
 	
+	private ArrayList<Bird> getSortedByColor(ArrayList<Bird> sorted){
+		Collections.sort(sorted,new CompareColor());
+		return sorted;
+	}
+	
+	private ArrayList<Bird> getSortedBySize(ArrayList<Bird> sorted){
+		Collections.sort(sorted,new CompareSize());
+		return sorted;
+	}
+		
 	private ArrayList<Bird> getBirdsByColor(String color){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<birdSearchSubset.size();i++){
