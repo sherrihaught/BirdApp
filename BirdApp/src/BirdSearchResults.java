@@ -1,4 +1,11 @@
 
-public class BirdSearchResults {
+public class BirdSearchResults
+{
 
+	public BirdSearchResults()
+	{
+		
+	}
+	
+	
 }

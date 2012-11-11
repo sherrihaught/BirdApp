@@ -1,4 +1,9 @@
 
-public class BirdSearch {
+public class BirdSearch
+{
 
+	public BirdSearch()
+	{
+		
+	}
 }
