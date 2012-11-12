@@ -45,7 +45,7 @@ public class Bird {
 		return description;
 	}
 	
-	public List<BirdTimeMostActive> getTimeMostActigve(){
+	public List<BirdTimeMostActive> getTimeMostActive(){
 		return timeActive;
 	}
 	
