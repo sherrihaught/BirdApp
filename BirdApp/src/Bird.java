@@ -9,8 +9,8 @@ public class Bird {
 	private BirdDescription description;
 	private BirdTimeMostActive timeActive;
 	
-	public Bird(BirdName name, List<BirdFamily> families, List<BirdLocation> locations, 
-			List<BirdColor> colors, BirdSize size, BirdDescription description, BirdTimeMostActive timeActive){
+	public Bird(BirdName name, List<BirdFamily> families, List<BirdColor> colors, List<BirdLocation> locations, 
+			 BirdSize size, BirdTimeMostActive timeActive, BirdDescription description){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
