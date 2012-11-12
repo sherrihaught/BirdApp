@@ -20,4 +20,8 @@ public class BirdFamily
 	public void setMyFamily(String myFamily) {
 		this.myFamily = myFamily;
 	}
+	
+	public String toString(){
+		return myFamily;
+	}
 }

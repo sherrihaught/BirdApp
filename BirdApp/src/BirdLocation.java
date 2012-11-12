@@ -21,4 +21,8 @@ public class BirdLocation
 	public void setMyLoc(String myLoc) {
 		this.myLoc = myLoc;
 	}
+	
+	public String toString(){
+		return myLoc;
+	}
 }

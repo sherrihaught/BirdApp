@@ -20,4 +20,7 @@ public class BirdColor
 		this.myColor = myColor;
 	}
 
+	public String toString(){
+		return myColor;
+	}
 }
