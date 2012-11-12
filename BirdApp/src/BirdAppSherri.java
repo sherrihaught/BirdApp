@@ -8,12 +8,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class BirdApp extends JPanel
+public class BirdAppSherri extends JPanel
 {
 	BufferedImage image;
 	
 	
-	public BirdApp(BufferedImage image)
+	public BirdAppSherri(BufferedImage image)
 	{
 		this.image = image;
 	}	
@@ -26,7 +26,7 @@ public class BirdApp extends JPanel
 		String penguinsPic = "pics/Penguins.jpg";
 		
 		BufferedImage image = ImageIO.read(new File(penguinsPic));
-		BirdApp contentPane = new BirdApp(image);
+		BirdAppSherri contentPane = new BirdAppSherri(image);
 		contentPane.setOpaque(true);
 		contentPane.setLayout(new BorderLayout());
 		
