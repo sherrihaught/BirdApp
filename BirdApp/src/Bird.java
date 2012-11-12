@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.List;
 
 public class Bird {
 	private BirdName name;
@@ -7,15 +7,17 @@ public class Bird {
 	private List<BirdColor> colors;
 	private BirdSize size;
 	private BirdDescription description;
+	private BirdTimeMostActive timeActive;
 	
 	public Bird(BirdName name, List<BirdFamily> families, List<BirdLocation> locations, 
-			List<BirdColor> colors, BirdSize size, BirdDescription description){
+			List<BirdColor> colors, BirdSize size, BirdDescription description, BirdTimeMostActive timeActive){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
 		this.colors = colors;
 		this.size = size;
 		this.description = description;
+		this.timeActive = timeActive;
 	}
 
 //--get methods---------------------------
@@ -43,6 +45,10 @@ public class Bird {
 		return description;
 	}
 	
+	public BirdTimeMostActive getTimeMostActigve(){
+		return timeActive;
+	}
+	
 //--set methods---------------------------
 	public void setName(BirdName name){
 		this.name = name;
@@ -66,5 +72,9 @@ public class Bird {
 	
 	public void getDescription(BirdDescription description){
 		this.description = description;
+	}
+	
+	public void getTimeMostActive(BirdTimeMostActive timeActive){
+		this.timeActive = timeActive;
 	}
 }
