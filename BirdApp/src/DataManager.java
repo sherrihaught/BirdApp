@@ -31,7 +31,7 @@ public class DataManager {
 		}else if(sortCategory == "size"){
 			sorted = getSortedBySize(sorted);
 		}else if(sortCategory == "timeActive"){
-			sorted = getSortedByTimeMostActive(sorted);
+			sorted = getSortedByTimeActive(sorted);
 		}
 		return sorted;
 	}
@@ -61,7 +61,7 @@ public class DataManager {
 		return sorted;
 	}
 	
-	private List<Bird> getSortedByTimeMostActive(List<Bird> sorted){
+	private List<Bird> getSortedByTimeActive(List<Bird> sorted){
 		Collections.sort(sorted,new CompareTimeActive());
 		return sorted;
 	}
