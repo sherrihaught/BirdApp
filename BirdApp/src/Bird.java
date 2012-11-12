@@ -7,10 +7,10 @@ public class Bird {
 	private List<BirdColor> colors;
 	private BirdSize size;
 	private BirdDescription description;
-	private List<BirdTimeMostActive> timeActive;
+	private List<BirdTimeActive> timeActive;
 	
 	public Bird(BirdName name, List<BirdFamily> families, List<BirdColor> colors, List<BirdLocation> locations, 
-			 BirdSize size, List<BirdTimeMostActive> timeActive, BirdDescription description){
+			 BirdSize size, List<BirdTimeActive> timeActive, BirdDescription description){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
@@ -45,7 +45,7 @@ public class Bird {
 		return description;
 	}
 	
-	public List<BirdTimeMostActive> getTimeMostActive(){
+	public List<BirdTimeActive> getTimeActive(){
 		return timeActive;
 	}
 	
@@ -74,7 +74,7 @@ public class Bird {
 		this.description = description;
 	}
 	
-	public void setTimeMostActive(List<BirdTimeMostActive> timeActive){
+	public void setTimeActive(List<BirdTimeActive> timeActive){
 		this.timeActive = timeActive;
 	}
 	
