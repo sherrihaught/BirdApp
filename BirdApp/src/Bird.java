@@ -1,15 +1,15 @@
 import java.util.*;
 
 public class Bird {
-	private String name;
-	private ArrayList<String> families;
-	private ArrayList<String> locations;
-	private ArrayList<String> colors;
-	private String size;
-	private String description;
+	private BirdName name;
+	private List<BirdFamily> families;
+	private List<BirdLocation> locations;
+	private List<BirdColor> colors;
+	private BirdSize size;
+	private BirdDescription description;
 	
-	public Bird(String name, ArrayList<String> families, ArrayList<String> locations, 
-				ArrayList<String> colors, String size, String description){
+	public Bird(BirdName name, List<BirdFamily> families, List<BirdLocation> locations, 
+			List<BirdColor> colors, BirdSize size, BirdDescription description){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
@@ -19,52 +19,52 @@ public class Bird {
 	}
 
 //--get methods---------------------------
-	public String getName(){
+	public BirdName getName(){
 		return name;
 	}
 	
-	public ArrayList<String> getFamilies(){
+	public List<BirdFamily> getFamilies(){
 		return families;
 	}
 	
-	public ArrayList<String> getLocations(){
+	public List<BirdLocation> getLocations(){
 		return locations;
 	}
 	
-	public ArrayList<String> getColors(){
+	public List<BirdColor> getColors(){
 		return colors;
 	}
 	
-	public String getSize(){
+	public BirdSize getSize(){
 		return size;
 	}
 	
-	public String getDescription(){
+	public BirdDescription getDescription(){
 		return description;
 	}
 	
 //--set methods---------------------------
-	public void setName(String name){
+	public void setName(BirdName name){
 		this.name = name;
 	}
 	
-	public void setFamilies(ArrayList<String> families){
+	public void setFamilies(List<BirdFamily> families){
 		this.families = families;
 	}
 	
-	public void setLocations(ArrayList<String> locations){
+	public void setLocations(List<BirdLocation> locations){
 		this.locations = locations;
 	}
 	
-	public void setColors(ArrayList<String> colors){
+	public void setColors(List<BirdColor> colors){
 		this.colors = colors;
 	}
 	
-	public void setSize(String size){
+	public void setSize(BirdSize size){
 		this.size = size;
 	}
 	
-	public void getDescription(String description){
+	public void getDescription(BirdDescription description){
 		this.description = description;
 	}
 }
