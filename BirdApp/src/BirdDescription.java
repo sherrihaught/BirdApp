@@ -21,7 +21,4 @@ public class BirdDescription
 		this.myDescription = myDescription;
 	}
 	
-	public String toString(){
-		return myDescription;
-	}
 }

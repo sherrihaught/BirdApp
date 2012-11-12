@@ -21,7 +21,5 @@ public class BirdSize
 		this.mySize = mySize;
 	}
 	
-	public String toString(){
-		return mySize;
-	}
+	
 }
