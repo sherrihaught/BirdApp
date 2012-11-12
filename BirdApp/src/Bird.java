@@ -77,4 +77,8 @@ public class Bird {
 	public void getTimeMostActive(BirdTimeMostActive timeActive){
 		this.timeActive = timeActive;
 	}
+	
+	public String toString(){
+		return "Name: " + name.toString() + "Families " + families.toString() + "Locations: " + locations.toString() + "Colors: " + colors.toString() + "Size: " + size.toString() + "Time Most Active: " + timeActive.toString() + "Description: " + description.toString();
+	}
 }

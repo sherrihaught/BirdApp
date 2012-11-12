@@ -3,19 +3,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class DataManager {
-	private List<Bird> birds;
+	private ArrayList<Bird> birds;
 
 	public DataManager(String fileName) throws FileNotFoundException{
 		birds = new ArrayList<Bird>();
 		addBirds(fileName);
 	}
 	
-	public List<Bird> getBirds(){
+	public ArrayList<Bird> getBirds(){
 		return birds;
 	}
 	
-	public List<Bird> getSortedBirds(String sortCategory){
-		List<Bird> sorted = birds;
+	public ArrayList<Bird> getSortedBirds(String sortCategory){
+		ArrayList<Bird> sorted = birds;
 		//sort sorted based on given sortCategory
 		return sorted;
 	}
@@ -57,6 +57,7 @@ public class DataManager {
 			
 			birds.add(new Bird(name, familiesList, colorsList, locationsList, size, timeActive, description));
 		}
+		inputFile.close();
 	}
 }
 
