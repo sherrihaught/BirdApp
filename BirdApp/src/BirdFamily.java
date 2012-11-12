@@ -21,6 +21,13 @@ public class BirdFamily
 		this.myFamily = myFamily;
 	}
 	
+	public boolean equals(Object obj){
+		if(myFamily.equals(((BirdFamily)obj).getMyFamily()) && this.getClass().equals(obj.getClass()))
+			return true;
+		else
+			return false;
+	}
+	
 	public String toString(){
 		return myFamily;
 	}

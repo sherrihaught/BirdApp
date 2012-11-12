@@ -21,6 +21,14 @@ public class BirdName
 		this.myName = myName;
 	}
 	
+	public boolean equals(Object obj){
+		if(myName.equals(((BirdName)obj).getMyName()) && this.getClass().equals(obj.getClass()))
+			return true;
+		else
+			return false;
+		
+	}
+	
 	public String toString(){
 		return myName;
 	}

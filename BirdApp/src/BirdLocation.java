@@ -14,12 +14,20 @@ public class BirdLocation
 		myLoc = location;
 	}
 
-	public String getMyLoc() {
+	public String getMyLocation() {
 		return myLoc;
 	}
 
-	public void setMyLoc(String myLoc) {
+	public void setMyLocation(String myLoc) {
 		this.myLoc = myLoc;
+	}
+	
+	public boolean equals(Object obj){
+		if(myLoc.equals(((BirdLocation)obj).getMyLocation()) && this.getClass().equals(obj.getClass()))
+			return true;
+		else
+			return false;
+		
 	}
 	
 	public String toString(){
