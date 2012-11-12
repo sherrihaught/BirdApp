@@ -1,23 +1,23 @@
 
 public class BirdColor 
 {
-	private String myColors;
+	private String myColor;
 	
 	public BirdColor()
 	{
-		myColors = "";
+		myColor = "";
 	}
-	public BirdColor(String colors)
+	public BirdColor(String color)
 	{
-		myColors = colors;
+		myColor = color;
 	}
 
-	public String getMyColors() {
-		return myColors;
+	public String getMyColor() {
+		return myColor;
 	}
 
-	public void setMyColors(String myColors) {
-		this.myColors = myColors;
+	public void setMyColors(String myColor) {
+		this.myColor = myColor;
 	}
 
 }
