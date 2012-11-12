@@ -7,10 +7,10 @@ public class Bird {
 	private List<BirdColor> colors;
 	private BirdSize size;
 	private BirdDescription description;
-	private BirdTimeMostActive timeActive;
+	private List<BirdTimeMostActive> timeActive;
 	
 	public Bird(BirdName name, List<BirdFamily> families, List<BirdColor> colors, List<BirdLocation> locations, 
-			 BirdSize size, BirdTimeMostActive timeActive, BirdDescription description){
+			 BirdSize size, List<BirdTimeMostActive> timeActive, BirdDescription description){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
@@ -45,7 +45,7 @@ public class Bird {
 		return description;
 	}
 	
-	public BirdTimeMostActive getTimeMostActigve(){
+	public List<BirdTimeMostActive> getTimeMostActigve(){
 		return timeActive;
 	}
 	
@@ -70,15 +70,15 @@ public class Bird {
 		this.size = size;
 	}
 	
-	public void getDescription(BirdDescription description){
+	public void setDescription(BirdDescription description){
 		this.description = description;
 	}
 	
-	public void getTimeMostActive(BirdTimeMostActive timeActive){
+	public void setTimeMostActive(List<BirdTimeMostActive> timeActive){
 		this.timeActive = timeActive;
 	}
 	
 	public String toString(){
-		return "Name: " + name.toString() + "Families " + families.toString() + "Locations: " + locations.toString() + "Colors: " + colors.toString() + "Size: " + size.toString() + "Time Most Active: " + timeActive.toString() + "Description: " + description.toString();
+		return "Name: " + name.toString() + " Families: " + families.toString() + " Locations: " + locations.toString() + " Colors: " + colors.toString() + " Size: " + size.toString() + " Time Most Active: " + timeActive.toString() + " Description: " + description.toString();
 	}
 }

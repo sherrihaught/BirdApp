@@ -52,10 +52,15 @@ public class DataManager {
 			}
 			
 			BirdSize size = new BirdSize(inputFile.nextLine());
-			BirdTimeMostActive  timeActive = new BirdTimeMostActive(inputFile.nextLine());
+			
+			String []timesActive = inputFile.nextLine().split("`");
+			ArrayList<BirdTimeMostActive> timesActiveList = new ArrayList<BirdTimeMostActive>();
+			for(int i=0; i<timesActive.length; i++){
+				timesActiveList.add(new BirdTimeMostActive(timesActive[i]));
+			}
 			BirdDescription  description = new BirdDescription(inputFile.nextLine());
 			
-			birds.add(new Bird(name, familiesList, colorsList, locationsList, size, timeActive, description));
+			birds.add(new Bird(name, familiesList, colorsList, locationsList, size, timesActiveList, description));
 		}
 		inputFile.close();
 	}
