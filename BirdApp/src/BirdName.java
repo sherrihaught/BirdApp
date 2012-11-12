@@ -20,5 +20,9 @@ public class BirdName
 	public void setMyName(String myName) {
 		this.myName = myName;
 	}
+	
+	public String toString(){
+		return myName;
+	}
 }
 
