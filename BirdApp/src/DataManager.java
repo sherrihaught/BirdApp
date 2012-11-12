@@ -3,28 +3,22 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class DataManager {
-	private ArrayList<Bird> birds;
+	private List<Bird> birds;
 
 	public DataManager(String fileName) throws FileNotFoundException{
 		birds = new ArrayList<Bird>();
 		addBirds(fileName);
 	}
 	
-	public ArrayList<Bird> getBirds(){
+	public List<Bird> getBirds(){
 		return birds;
 	}
 	
-	public ArrayList<Bird> getSortedBirds(String sortCategory){
-		ArrayList<Bird> sorted = birds;
+	public List<Bird> getSortedBirds(String sortCategory){
+		List<Bird> sorted = new ArrayList<Bird>();
+		sorted = birds;
 		//sort sorted based on given sortCategory
 		return sorted;
-	}
-	
-	public ArrayList<Bird> getSubsetBirds(String searchCategory, String searchValue){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
-		//search through birds based on searchCategory
-		//if Bird has searchValue, add to subset
-		return subset;
 	}
 	
 	public void addBirds(String fileName) throws FileNotFoundException{
