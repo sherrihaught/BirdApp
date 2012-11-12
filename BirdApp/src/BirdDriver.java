@@ -2,14 +2,11 @@
 import java.util.ArrayList;
 public class BirdDriver {
 
-	private static DataManager dm;
-	/**
-	 * @param args
-	 */
+	private DataManager dm;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BirdDriver drive = new BirdDriver();
-		drive.displayBirds(dm.getBirds());
 	}
 	
 	private BirdDriver(){
@@ -19,6 +16,7 @@ public class BirdDriver {
 		catch(Exception e){
 			System.out.println(e.toString());
 		}
+		displayBirds(dm.getBirds());
 	}
 
 	private void displayBirds(ArrayList<Bird> birds){
