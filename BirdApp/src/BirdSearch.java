@@ -15,7 +15,7 @@ public class BirdSearch{
 	 * @param timeActive The time active to search for
 	 * @param description The description to search for, checks for partial equality
 	 */
-	public BirdSearch(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeMostActive timeActive, BirdDescription description){
+	public BirdSearch(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive, BirdDescription description){
 		searchBirds(birdList, name, color, family, location, size, timeActive, description);
 	}
 	
@@ -26,49 +26,49 @@ public class BirdSearch{
 	 */
 	public BirdSearch(List<Bird> birdList, Object searchObject){
 		if(searchObject.getClass().equals(new BirdName().getClass())) //Name
-			searchBirds(birdList, (BirdName)searchObject, new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList, (BirdName)searchObject, new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchObject.getClass().equals(new BirdColor().getClass())) //Color
-			searchBirds(birdList,  new BirdName(), (BirdColor)searchObject, new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), (BirdColor)searchObject, new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchObject.getClass().equals(new BirdFamily().getClass())) //Family
-			searchBirds(birdList,  new BirdName(), new BirdColor(), (BirdFamily)searchObject, new BirdLocation() , new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), (BirdFamily)searchObject, new BirdLocation() , new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchObject.getClass().equals(new BirdLocation().getClass())) //Location
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), (BirdLocation)searchObject, new BirdSize(),  new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), (BirdLocation)searchObject, new BirdSize(),  new BirdTimeActive(), new BirdDescription());
 		else if(searchObject.getClass().equals(new BirdSize().getClass())) //Size
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), (BirdSize)searchObject, new BirdTimeMostActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdTimeMostActive().getClass())) //Time Active
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), (BirdTimeMostActive)searchObject, new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), (BirdSize)searchObject, new BirdTimeActive(), new BirdDescription());
+		else if(searchObject.getClass().equals(new BirdTimeActive().getClass())) //Time Active
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), (BirdTimeActive)searchObject, new BirdDescription());
 		else if(searchObject.getClass().equals(new BirdDescription().getClass())) //Description
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(), (BirdDescription)searchObject);
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), (BirdDescription)searchObject);
 		else
 			System.out.println("searchObject class type not found.");
 	}
 	
 	/**
-	 * 
+	 * Searches the birdList by the category and search string.
 	 * @param birdList The list of birds to be searched.
 	 * @param searchCategory The category to be searched. Only accepts: name, color, family, location, size, timeActive, or description.
 	 * @param searchString The categories string to be checked for
 	 */
 	public BirdSearch(List<Bird> birdList, String searchCategory, String searchString){
 		if(searchCategory.equals("name")) //Name
-			searchBirds(birdList, new BirdName(searchString), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList, new BirdName(searchString), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchCategory.equals("color")) //Color
-			searchBirds(birdList,  new BirdName(), new BirdColor(searchString), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(searchString), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchCategory.equals("family")) //Family
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(searchString), new BirdLocation() , new BirdSize(), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(searchString), new BirdLocation() , new BirdSize(), new BirdTimeActive(), new BirdDescription());
 		else if(searchCategory.equals("location")) //Location
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(searchString), new BirdSize(),  new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(searchString), new BirdSize(),  new BirdTimeActive(), new BirdDescription());
 		else if(searchCategory.equals("size")) //Size
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(searchString), new BirdTimeMostActive(), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(searchString), new BirdTimeActive(), new BirdDescription());
 		else if(searchCategory.equals("timeActive")) //Time Active
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(searchString), new BirdDescription());
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(searchString), new BirdDescription());
 		else if(searchCategory.equals("description")) //Description
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeMostActive(),  new BirdDescription(searchString));
+			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(),  new BirdDescription(searchString));
 		else
 			System.out.println("searchString doens't match.");
 	}
 	
-	private void searchBirds(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeMostActive timeActive, BirdDescription description){
+	private void searchBirds(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive, BirdDescription description){
 		results = new ArrayList<Bird>();
 		results = birdList;
 		if(!name.equals(new BirdName()))
@@ -79,7 +79,7 @@ public class BirdSearch{
 			results = getBirdsByFamily(family);
 		if(!location.equals(new BirdLocation()))
 			results = getBirdsByLocation(location);
-		if(!timeActive.equals(new BirdTimeMostActive()))
+		if(!timeActive.equals(new BirdTimeActive()))
 			results = getBirdsByTimeActive(timeActive);
 		if(!size.equals(new BirdSize()))
 			results = getBirdsBySize(size);
@@ -109,10 +109,10 @@ public class BirdSearch{
 		return subset;
 	}
 	
-	private ArrayList<Bird> getBirdsByTimeActive(BirdTimeMostActive timeActive){
+	private ArrayList<Bird> getBirdsByTimeActive(BirdTimeActive timeActive){
 		ArrayList<Bird> subset = new ArrayList<Bird>();
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getTimeMostActive().contains(timeActive))
+			if(results.get(i).getTimeActive().contains(timeActive))
 				subset.add(results.get(i));
 		}
 		return subset;

@@ -21,6 +21,10 @@ public class BirdDescription
 		this.myDescription = myDescription;
 	}
 	
+	public int compareTo(BirdDescription description){
+		return myDescription.compareTo(description.getMyDescription());
+	}
+	
 	public boolean equals(Object obj){
 		if(myDescription.equals(((BirdDescription)obj).getMyDescription()) && this.getClass().equals(obj.getClass()))
 			return true;

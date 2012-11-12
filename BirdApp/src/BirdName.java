@@ -26,7 +26,10 @@ public class BirdName
 			return true;
 		else
 			return false;
-		
+	}
+	
+	public int compareTo(BirdName name){
+		return myName.compareTo(name.getMyName());
 	}
 	
 	public String toString(){

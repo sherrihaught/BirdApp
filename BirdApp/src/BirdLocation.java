@@ -2,35 +2,38 @@
 public class BirdLocation 
 {
 
-	private String myLoc;
+	private String myLocation;
 	
 	public BirdLocation()
 	{
-		myLoc = "";
+		myLocation = "";
 	}
 	
 	public BirdLocation( String location)
 	{
-		myLoc = location;
+		myLocation = location;
 	}
 
 	public String getMyLocation() {
-		return myLoc;
+		return myLocation;
 	}
 
-	public void setMyLocation(String myLoc) {
-		this.myLoc = myLoc;
+	public void setMyLocation(String myLocation) {
+		this.myLocation = myLocation;
+	}
+	
+	public int compareTo(BirdLocation location){
+		return myLocation.compareTo(location.getMyLocation());
 	}
 	
 	public boolean equals(Object obj){
-		if(myLoc.equals(((BirdLocation)obj).getMyLocation()) && this.getClass().equals(obj.getClass()))
+		if(myLocation.equals(((BirdLocation)obj).getMyLocation()) && this.getClass().equals(obj.getClass()))
 			return true;
 		else
 			return false;
-		
 	}
 	
 	public String toString(){
-		return myLoc;
+		return myLocation;
 	}
 }

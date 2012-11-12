@@ -21,6 +21,10 @@ public class BirdFamily
 		this.myFamily = myFamily;
 	}
 	
+	public int compareTo(BirdFamily family){
+		return myFamily.compareTo(family.getMyFamily());
+	}
+	
 	public boolean equals(Object obj){
 		if(myFamily.equals(((BirdFamily)obj).getMyFamily()) && this.getClass().equals(obj.getClass()))
 			return true;
