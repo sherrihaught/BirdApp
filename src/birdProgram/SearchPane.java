@@ -112,7 +112,7 @@ public class SearchPane extends JPanel {
 		gl_searchPane.setVerticalGroup(
 			gl_searchPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_searchPane.createSequentialGroup()
-					.addGap(120)
+					.addGap((int)currScreen.getHeight()/10)
 					.addGroup(gl_searchPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(NameCriteriaLabel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 						.addComponent(NameCriteriaEntry, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))

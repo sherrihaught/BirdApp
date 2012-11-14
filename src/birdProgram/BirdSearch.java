@@ -17,7 +17,8 @@ public class BirdSearch{
 	 * @param timeActive The time active to search for
 	 * @param description The description to search for, checks for partial equality
 	 */
-	public BirdSearch(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive, BirdDescription description){
+	public BirdSearch(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, 
+						BirdSize size, BirdTimeActive timeActive, BirdDescription description){
 		searchBirds(birdList, name, color, family, location, size, timeActive, description);
 	}
 	
