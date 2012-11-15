@@ -1,42 +1,51 @@
 package birdProgram;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BirdTimeActive 
 {
-
-	private String myTimeActive;
+	private List<String> myTimesActive;
 	
 	public BirdTimeActive()
 	{
-		myTimeActive = "";
+		myTimesActive = new ArrayList<String>();
 	}
 	
 	public BirdTimeActive(String timeActive)
 	{
-		this.myTimeActive = timeActive;
+		this();
+		addTime(timeActive);
 	}
 	
-	public String getMyTimeActive()
-	{
-		return myTimeActive;
+	public BirdTimeActive(List<String> timesActive){
+		myTimesActive = timesActive;
 	}
 	
-	public void setMyTimeActive(String myTimeActive) 
+	public void addTime(String timeActive){
+		if(!myTimesActive.contains(timeActive)){
+			myTimesActive.add(timeActive);
+		}
+	}
+	
+	public List<String> getMyTimesActive()
 	{
-		this.myTimeActive = myTimeActive;
+		return myTimesActive;
+	}
+	
+	public void setMyTimesActive(List<String> myTimesActive) 
+	{
+		this.myTimesActive = myTimesActive;
 	}
 	
 	public boolean equals(Object obj){
-		if(myTimeActive.equals(((BirdTimeActive)obj).getMyTimeActive()) && this.getClass().equals(obj.getClass()))
+		if(myTimesActive.equals(((BirdTimeActive)obj).getMyTimesActive()) && this.getClass().equals(obj.getClass()))
 			return true;
 		else
 			return false;
 	}
 	
-	public int compareTo(BirdTimeActive timeActive){
-		return myTimeActive.compareTo(timeActive.getMyTimeActive());
-	}
-	
 	public String toString(){
-		return myTimeActive;
+		return myTimesActive.toString();
 	}
 }
