@@ -28,7 +28,7 @@ public class SearchPane extends JPanel {
 	private DropDownListener sizeChosen;
 	private RadioListener nightListener;
 	private RadioListener dayListener;
-	private RadioListener bothListener;
+	private RadioListener anyListener;
 	
 
 	public SearchPane(Dimension currScreen, Controller c){
@@ -97,12 +97,13 @@ public class SearchPane extends JPanel {
 		
 		JRadioButton BothRadioButton = new JRadioButton("All hours");
 		BothRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, (int)currScreen.getWidth()/110));
-		bothListener = new RadioListener(BothRadioButton);
-		BothRadioButton.addMouseListener(bothListener);
+
 		
 		JRadioButton AnyRadioButton = new JRadioButton("Any hours");
 		AnyRadioButton.setSelected(true);
 		AnyRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, (int)currScreen.getWidth()/110));
+		anyListener = new RadioListener(AnyRadioButton);
+		AnyRadioButton.addMouseListener(anyListener);
 		
 		ButtonGroup ActivityRadios = new ButtonGroup();
 		ActivityRadios.add(NightRadioButton);
@@ -189,8 +190,16 @@ public class SearchPane extends JPanel {
 	
 	public List<Object> getStates(){
 		List<Object> states = new ArrayList<Object>();
-		states.add(new BirdName(nameEntered.getTextEntered()));
-		states.add(new BirdFamily(familyEntered.getTextEntered()));
+		if(nameEntered.getTextEntered().equals("")){
+			states.add(null);
+		}else{
+			states.add(new BirdName(nameEntered.getTextEntered()));
+		}
+		if(familyEntered.getTextEntered().equals("")){
+			states.add(null);
+		}else{
+			states.add(new BirdFamily(familyEntered.getTextEntered()));
+		}
 		//states.add(locationChosen.getSelected());
 		//states.add(colorChosen.getSelected());
 		//states.add(sizeChosen.getSelected());
@@ -199,7 +208,9 @@ public class SearchPane extends JPanel {
 			b.addTime("a.m.");
 		}else if(nightListener.isSelected()){
 			b.addTime("p.m.");
-		}else if(bothListener.isSelected()){
+		}else if(anyListener.isSelected()){
+			b = null;
+		}else{
 			b.addTime("a.m.");
 			b.addTime("p.m.");
 		}
@@ -208,6 +219,11 @@ public class SearchPane extends JPanel {
 	}
 	
 	public void resetStates(){
-		
+		nameEntered.setDefault();
+		familyEntered.setDefault();
+		locationChosen.setDefault();
+		colorChosen.setDefault();
+		sizeChosen.setDefault();
+		anyListener.setSelected(true);
 	}
 }

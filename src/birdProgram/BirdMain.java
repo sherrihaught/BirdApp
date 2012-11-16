@@ -11,6 +11,9 @@ public class BirdMain {
 					Controller c = new Controller();
 					BackgroundFrame frame = new BackgroundFrame(c);
 					frame.setVisible(true);
+					wait(4000);
+					frame.getSearchPane().resetStates();
+					frame.repaint();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

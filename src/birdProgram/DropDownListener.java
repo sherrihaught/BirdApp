@@ -34,6 +34,15 @@ public class DropDownListener implements MouseListener{
 	}
 
 	public BirdAttribute getSelected(){
-		return selected;
+		if(selected.toString().equals("Any")){
+			return null;
+		}else{
+			return selected;
+		}
+	}
+	
+	public void setDefault(){
+		dropDown.setSelectedIndex(0);
+		selected = (BirdAttribute)dropDown.getSelectedItem();
 	}
 }

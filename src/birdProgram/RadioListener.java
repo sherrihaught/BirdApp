@@ -32,4 +32,9 @@ public class RadioListener implements MouseListener{
 	public boolean isSelected(){
 		return selected;
 	}
+	
+	public void setSelected(boolean b){
+		radioButton.setSelected(b);
+		selected = isSelected();
+	}
 }

@@ -26,5 +26,9 @@ public class TextEntryListener implements KeyListener{
 	public String getTextEntered(){
 		return TextEntered;
 	}
-
+	
+	public void setDefault(){
+		TextEntry.setText("");
+		TextEntered = TextEntry.getText();
+	}
 }
