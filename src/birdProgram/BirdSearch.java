@@ -1,6 +1,5 @@
 package birdProgram;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BirdSearch{
@@ -18,143 +17,71 @@ public class BirdSearch{
 	 * @param description The description to search for, checks for partial equality
 	 */
 	public BirdSearch(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, 
-						BirdSize size, BirdTimeActive timeActive, BirdDescription description){
-		searchBirds(birdList, name, color, family, location, size, timeActive, description);
+						BirdSize size, BirdTimeActive timeActive){
+		searchBirds(birdList, name, color, family, location, size, timeActive);
 	}
 	
-	/**
-	 * Takes an object that can be of any attribute of the bird and searches for it in all birds.
-	 * @param birdList The list of birds to be searched.
-	 * @param searchObject The object to be searched for, must be a BirdName, BirdColor, BirdFamily, BirdSize, BirdTimeMostActive, or BirdDescription object.
-	 */
-	public BirdSearch(List<Bird> birdList, Object searchObject){
-		if(searchObject.getClass().equals(new BirdName().getClass())) //Name
-			searchBirds(birdList, (BirdName)searchObject, new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdColor().getClass())) //Color
-			searchBirds(birdList,  new BirdName(), (BirdColor)searchObject, new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdFamily().getClass())) //Family
-			searchBirds(birdList,  new BirdName(), new BirdColor(), (BirdFamily)searchObject, new BirdLocation() , new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdLocation().getClass())) //Location
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), (BirdLocation)searchObject, new BirdSize(),  new BirdTimeActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdSize().getClass())) //Size
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), (BirdSize)searchObject, new BirdTimeActive(), new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdTimeActive().getClass())) //Time Active
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), (BirdTimeActive)searchObject, new BirdDescription());
-		else if(searchObject.getClass().equals(new BirdDescription().getClass())) //Description
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), (BirdDescription)searchObject);
-		else
-			System.out.println("searchObject class type not found.");
-	}
-	
-	/**
-	 * Searches the birdList by the category and search string.
-	 * @param birdList The list of birds to be searched.
-	 * @param searchCategory The category to be searched. Only accepts: name, color, family, location, size, timeActive, or description.
-	 * @param searchString The categories string to be checked for
-	 */
-	public BirdSearch(List<Bird> birdList, String searchCategory, String searchString){
-		if(searchCategory.equals("name")) //Name
-			searchBirds(birdList, new BirdName(searchString), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchCategory.equals("color")) //Color
-			searchBirds(birdList,  new BirdName(), new BirdColor(searchString), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchCategory.equals("family")) //Family
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(searchString), new BirdLocation() , new BirdSize(), new BirdTimeActive(), new BirdDescription());
-		else if(searchCategory.equals("location")) //Location
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(searchString), new BirdSize(),  new BirdTimeActive(), new BirdDescription());
-		else if(searchCategory.equals("size")) //Size
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(searchString), new BirdTimeActive(), new BirdDescription());
-		else if(searchCategory.equals("timeActive")) //Time Active
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(searchString), new BirdDescription());
-		else if(searchCategory.equals("description")) //Description
-			searchBirds(birdList,  new BirdName(), new BirdColor(), new BirdFamily(), new BirdLocation(), new BirdSize(), new BirdTimeActive(),  new BirdDescription(searchString));
-		else
-			System.out.println("searchString doens't match.");
-	}
-	
-	private void searchBirds(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive, BirdDescription description){
-		results = new ArrayList<Bird>();
-		results = birdList;
-		if(!name.equals(new BirdName()))
-			results = getBirdsByName(name);
-		if(!color.equals(new BirdColor()))
-			results = getBirdsByColor(color);
-		if(!family.equals(new BirdFamily()))
-			results = getBirdsByFamily(family);
-		if(!location.equals(new BirdLocation()))
-			results = getBirdsByLocation(location);
-		if(!timeActive.equals(new BirdTimeActive()))
-			results = getBirdsByTimeActive(timeActive);
-		if(!size.equals(new BirdSize()))
-			results = getBirdsBySize(size);
-		if(!description.equals(new BirdDescription()))
-			results = getBirdsByDescription(description);
+	private void searchBirds(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive){
+		// results = new ArrayList<Bird>();
+		results = birdList; // initialization
+		if(name != null)
+			getBirdsByName(name);
+		if(color != null)
+			getBirdsByColor(color);
+		if(family != null)
+			getBirdsByFamily(family);
+		if(location != null)
+			getBirdsByLocation(location);
+		if(size != null)
+			getBirdsByTimeActive(timeActive);
+		if(timeActive != null)
+			getBirdsBySize(size);
 	}
 	
 	public List<Bird> getBirds(){
 		return results;
 	}
 	
-	private List<Bird> getBirdsByName(BirdName name){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsByName(BirdName name){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getName().getMyName().indexOf(name.getMyName())>=0)
-				subset.add(results.get(i));
+			if(!results.get(i).getName().getMyName().equals(name.getMyName()))
+				results.remove(results.get(i));
 		}
-		return subset;
 	}
 	
-	private List<Bird> getBirdsByDescription(BirdDescription description){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsByTimeActive(BirdTimeActive timeActive){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getDescription().getMyDescription().indexOf(description.getMyDescription())>=0)
-				subset.add(results.get(i));
+			if(!results.get(i).getTimeActive().contains(timeActive))
+				results.remove(results.get(i));
 		}
-		return subset;
 	}
 	
-	private ArrayList<Bird> getBirdsByTimeActive(BirdTimeActive timeActive){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsByColor(BirdColor color){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getTimeActive().contains(timeActive))
-				subset.add(results.get(i));
+			if(!results.get(i).getColors().contains(color))
+				results.remove(results.get(i));
 		}
-		return subset;
 	}
 	
-	private ArrayList<Bird> getBirdsByColor(BirdColor color){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsBySize(BirdSize size){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getColors().contains(color))
-				subset.add(results.get(i));
+			if(!results.get(i).getSize().equals(size))
+				results.remove(results.get(i));
 		}
-		return subset;
 	}
 	
-	private ArrayList<Bird> getBirdsBySize(BirdSize size){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsByFamily(BirdFamily family){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getSize().equals(size))
-				subset.add(results.get(i));
+			if(!results.get(i).getFamilies().contains(family))
+				results.remove(results.get(i));
 		}
-		return subset;
 	}
 	
-	private ArrayList<Bird> getBirdsByFamily(BirdFamily family){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
+	private void getBirdsByLocation(BirdLocation location){
 		for(int i=0;i<results.size();i++){
-			if(results.get(i).getFamilies().contains(family))
-				subset.add(results.get(i));
+			if(!results.get(i).getLocations().contains(location))
+				results.remove(results.get(i));
 		}
-		return subset;
-	}
-	
-	private ArrayList<Bird> getBirdsByLocation(BirdLocation location){
-		ArrayList<Bird> subset = new ArrayList<Bird>();
-		for(int i=0;i<results.size();i++){
-			if(results.get(i).getLocations().contains(location))
-				subset.add(results.get(i));
-		}
-		return subset;
 	}
 	
 }
