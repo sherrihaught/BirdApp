@@ -125,4 +125,8 @@ public class Controller {
 		colors.add(new BirdColor("Grey"));
 		return colors;
 	}
+
+	public void setFavorite(Bird bird, boolean favorite) {
+		//add or remove bird from favs
+	}
 }

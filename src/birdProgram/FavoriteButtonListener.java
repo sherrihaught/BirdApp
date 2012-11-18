@@ -1,6 +1,3 @@
-/*@file FavoriteButtonListener.java
- * @author Sherri
- */
 package birdProgram;
 
 import java.awt.event.ActionEvent;
@@ -31,6 +28,6 @@ public class FavoriteButtonListener implements ActionListener{
         }else{
         	favButton.setText("Not Favorite");
         }
-        //c.setFavorite(bird, favorite);		
+        c.setFavorite(bird, favorite);		
 	}
 }
