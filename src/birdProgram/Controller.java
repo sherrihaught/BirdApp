@@ -17,6 +17,18 @@ public class Controller {
 		results = new BirdSearchResults(); //keeps the 10 most recent searches
 	}
 	
+	public Bird getSelectedBird(){
+		return birds.getBirds().remove(0);
+	}
+	
+	public boolean isFavorite(Bird b){
+		//if (favs.getBirds().contains(b)){
+		//	return true;
+		//}else{
+			return false;
+		//}
+	}
+	
 	public BirdSearch getLastSearch(){
 		return results.getLast(birds.getBirds());
 	}
@@ -25,9 +37,9 @@ public class Controller {
 		return birds.getBirds();
 	}
 	
-	public List<Bird> getFavorites(){
-		return favs.getBirds();
-	}
+	//public List<Bird> getFavorites(){
+		//return favs.getBirds();
+	//}
 	
 	public Vector<BirdSize> getPossibleSizes(){
 		Vector<BirdSize> sizes = new Vector<BirdSize>();
