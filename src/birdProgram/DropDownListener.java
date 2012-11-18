@@ -13,24 +13,20 @@ public class DropDownListener implements MouseListener{
 		this.dropDown = dropDown;
 	}
 
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e){
 		selected = (BirdAttribute)dropDown.getSelectedItem();
 	}
 
-	public void mouseEntered(MouseEvent arg0) {
-		
+	public void mouseEntered(MouseEvent e){	
 	}
 
-	public void mouseExited(MouseEvent arg0) {
-		
+	public void mouseExited(MouseEvent e){
 	}
 
-	public void mousePressed(MouseEvent arg0) {
-		
+	public void mousePressed(MouseEvent e){
 	}
 
-	public void mouseReleased(MouseEvent arg0) {
-		
+	public void mouseReleased(MouseEvent e){
 	}
 
 	public BirdAttribute getSelected(){

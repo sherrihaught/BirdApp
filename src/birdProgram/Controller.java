@@ -4,29 +4,41 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Vector;
 
+//Intermediary between View classes and Model classes
 public class Controller {
 
-	//private BirdFavorites favs;
+	private BirdFavorites favs;
 	private Birds birds;
 	private BirdSearchResults results;
 	
 	public Controller() throws FileNotFoundException{
-		//favs = new BirdFavorites();
-		birds = new Birds("birds.txt");
-		results = new BirdSearchResults();
+		favs = new BirdFavorites(); //loads the user-marked favorite birds
+		birds = new Birds("birds.txt"); //loads the birds in the current database
+		results = new BirdSearchResults(); //keeps the 10 most recent searches
 	}
 	
 	public BirdSearch getLastSearch(){
-		return results.getLast();
+		return results.getLast(birds.getBirds());
 	}
 	
 	public List<Bird> getBirds(){
 		return birds.getBirds();
 	}
 	
-//	public List<Bird> getFavorites(){
-//		return favs.getBirds();
-//	}
+	public List<Bird> getFavorites(){
+		return favs.getBirds();
+	}
+	
+	public Vector<BirdSize> getPossibleSizes(){
+		Vector<BirdSize> sizes = new Vector<BirdSize>();
+		sizes.add(new BirdSize("Any"));
+		sizes.add(new BirdSize("Very Small"));
+		sizes.add(new BirdSize("Small"));
+		sizes.add(new BirdSize("Medium"));
+		sizes.add(new BirdSize("Large"));
+		sizes.add(new BirdSize("Very Large"));		
+		return sizes;
+	}
 	
 	public Vector<BirdLocation> getPossibleLocations(){
 		Vector<BirdLocation> locations = new Vector<BirdLocation>();
@@ -100,16 +112,5 @@ public class Controller {
 		colors.add(new BirdColor("Brown"));
 		colors.add(new BirdColor("Grey"));
 		return colors;
-	}
-	
-	public Vector<BirdSize> getPossibleSizes(){
-		Vector<BirdSize> sizes = new Vector<BirdSize>();
-		sizes.add(new BirdSize("Any"));
-		sizes.add(new BirdSize("Very Small"));
-		sizes.add(new BirdSize("Small"));
-		sizes.add(new BirdSize("Medium"));
-		sizes.add(new BirdSize("Large"));
-		sizes.add(new BirdSize("Very Large"));		
-		return sizes;
 	}
 }
