@@ -53,6 +53,8 @@ public class ResultsPane extends JPanel {
 		SortRadios.add(SortByName);
 		SortRadios.add(SortByFamily);
 		SortRadios.add(SortByLocation);
+		SortRadios.add(SortByColor);
+		SortRadios.add(SortBySize);
 		
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		GroupLayout gl_resultsPane = new GroupLayout(this);
