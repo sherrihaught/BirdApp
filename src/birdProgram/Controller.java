@@ -1,27 +1,32 @@
 package birdProgram;
 
-//import java.util.List;
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Vector;
 
 public class Controller {
 
-	private BirdFavorites favs;
+	//private BirdFavorites favs;
 	private Birds birds;
 	private BirdSearchResults results;
 	
-	public Controller(){
-		favs = new BirdFavorites();
-		birds = new Birds();
+	public Controller() throws FileNotFoundException{
+		//favs = new BirdFavorites();
+		birds = new Birds("birds.txt");
 		results = new BirdSearchResults();
 	}
 	
-	//public List<Bird> getLastSearch(){
-	//	return results.getLast();
-	//}
+	public BirdSearch getLastSearch(){
+		return results.getLast();
+	}
 	
-	//public List<Bird> getFavorites(){
-	//	return favs.getBirds();
-	//}
+	public List<Bird> getBirds(){
+		return birds.getBirds();
+	}
+	
+//	public List<Bird> getFavorites(){
+//		return favs.getBirds();
+//	}
 	
 	public Vector<BirdLocation> getPossibleLocations(){
 		Vector<BirdLocation> locations = new Vector<BirdLocation>();

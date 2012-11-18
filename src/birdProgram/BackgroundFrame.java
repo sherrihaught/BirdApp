@@ -2,6 +2,7 @@ package birdProgram;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import java.awt.Font;
 
@@ -25,8 +26,9 @@ public class BackgroundFrame extends JFrame {
 		searchPane = new SearchPane(currScreen, c);		
 		tabBackground.addTab("   Search   ", searchPane);
 		
-		resultsPane = new ResultsPane(currScreen);
-		tabBackground.addTab("   Search Results   ", resultsPane);
+		resultsPane = new ResultsPane(currScreen, c);
+		JScrollPane scrollView = new JScrollPane(resultsPane);
+		tabBackground.addTab("   Search Results   ", scrollView);
 		
 		birdPane = new BirdPane(currScreen);
 		tabBackground.addTab("   Bird   ", birdPane);
