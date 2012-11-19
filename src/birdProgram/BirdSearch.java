@@ -44,7 +44,7 @@ public class BirdSearch{
 	
 	private void getBirdsByName(BirdName name){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getName().getMyName().equals(name.getMyName()))
+			if(!results.get(i).getName().get().equals(name.get()))
 				results.remove(results.get(i));
 		}
 	}
