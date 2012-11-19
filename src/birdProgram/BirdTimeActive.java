@@ -1,19 +1,17 @@
 package birdProgram;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BirdTimeActive 
+public class BirdTimeActive extends BirdAttribute
 {
-	private List<String> myTimesActive;
 	
-	public BirdTimeActive()
-	{
+	public BirdTimeActive(){
 		myTimesActive = new ArrayList<String>();
 	}
 	
-	public BirdTimeActive(String timeActive)
-	{
+	public BirdTimeActive(String timeActive){
 		this();
 		addTime(timeActive);
 	}
@@ -28,24 +26,4 @@ public class BirdTimeActive
 		}
 	}
 	
-	public List<String> getMyTimesActive()
-	{
-		return myTimesActive;
-	}
-	
-	public void setMyTimesActive(List<String> myTimesActive) 
-	{
-		this.myTimesActive = myTimesActive;
-	}
-	
-	public boolean equals(Object obj){
-		if(myTimesActive.equals(((BirdTimeActive)obj).getMyTimesActive()) && this.getClass().equals(obj.getClass()))
-			return true;
-		else
-			return false;
-	}
-	
-	public String toString(){
-		return myTimesActive.toString();
-	}
 }
