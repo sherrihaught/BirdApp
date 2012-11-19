@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BirdAttribute {
-  
+	
 	//MEMBER DECLARATIONS
 	protected String myColor;
 	protected String myDescription;
@@ -71,11 +71,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(myDescription.equals(((BirdDescription)obj).getMyDescription()) && this.getClass().equals(obj.getClass()))
+		if(myDescription.equals(((BirdDescription)obj).getMyDescription()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
-		
+		}
+			
 	}
 	
 	
@@ -104,10 +105,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(myFamily.equals(((BirdFamily)obj).getMyFamily()) && this.getClass().equals(obj.getClass()))
+		if(myFamily.equals(((BirdFamily)obj).getMyFamily()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
+		}
+			
 	}
 	
 	
@@ -136,10 +139,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(myLocation.equals(((BirdLocation)obj).getMyLocation()) && this.getClass().equals(obj.getClass()))
+		if(myLocation.equals(((BirdLocation)obj).getMyLocation()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
+		}
+			
 	}
 	
 	
@@ -168,10 +173,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(myName.equals(((BirdName)obj).getMyName()) && this.getClass().equals(obj.getClass()))
+		if(myName.equals(((BirdName)obj).getMyName()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
+		}
+			
 	}
 	
 	
@@ -190,25 +197,29 @@ public class BirdAttribute {
 	
 	//compareTo & getSizeNumber
 	public int compareTo(BirdSize size){
-		if(this.getSizeNumber()<size.getSizeNumber())
+		if(this.getSizeNumber()<size.getSizeNumber()){
 			return -1;
-		else if(this.getSizeNumber()==size.getSizeNumber())
+		}else if(this.getSizeNumber()==size.getSizeNumber()){
 			return 0;
-		else
+		}else{
 			return 1;
+		}
+		
 	}
 	
 	public int getSizeNumber(){
-		if(mySize.equals("Very Small"))
+		if(mySize.equals("Very Small")){
 			return 1;
-		else if(mySize.equals("Small"))
+		}else if(mySize.equals("Small")){
 			return 2;
-		else if(mySize.equals("Medium"))
+		}else if(mySize.equals("Medium")){
 			return 3;
-		else if(mySize.equals("Large"))
+		}else if(mySize.equals("Large")){
 			return 4;
-		else
+		}else{
 			return 5;
+		}
+		
 	}
 	
 	//toString
@@ -218,10 +229,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(mySize.equals(((BirdSize)obj).getMySize()) && this.getClass().equals(obj.getClass()))
+		if(mySize.equals(((BirdSize)obj).getMySize()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
+		}
+
 	}
 	
 	
@@ -245,11 +258,12 @@ public class BirdAttribute {
 	
 	//equals
 	public boolean equals(Object obj){
-		if(myTimesActive.equals(((BirdTimeActive)obj).getMyTimesActive()) && this.getClass().equals(obj.getClass()))
+		if(myTimesActive.equals(((BirdTimeActive)obj).getMyTimesActive()) && this.getClass().equals(obj.getClass())){
 			return true;
-		else
+		}else{
 			return false;
+		}
+			
 	}
 	
 }
-
