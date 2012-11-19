@@ -203,16 +203,15 @@ public class SearchPane extends JPanel {
 		states.add(locationChosen.getSelected());
 		states.add(colorChosen.getSelected());
 		states.add(sizeChosen.getSelected());
-		BirdTimeActive b = new BirdTimeActive();
+		BirdTimeActive b = new BirdTimeActive("");
 		if(dayListener.isSelected()){
-			b.addTime("a.m.");
+			b.set("a.m.");
 		}else if(nightListener.isSelected()){
-			b.addTime("p.m.");
+			b.set("p.m.");
 		}else if(anyListener.isSelected()){
 			b = null;
 		}else{
-			b.addTime("a.m.");
-			b.addTime("p.m.");
+			b.set("a.m., p.m.");
 		}
 		states.add(b); 
 		return states;

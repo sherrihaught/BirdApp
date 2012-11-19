@@ -56,4 +56,8 @@ public class Birds {
 		}
 		inputFile.close();
 	}
+	
+	public List<Bird> getBirds(){
+		return birds;
+	}
 }
