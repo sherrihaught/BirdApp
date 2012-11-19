@@ -19,13 +19,11 @@ public class SearchButtonActionListener implements ActionListener {
 		List<Object> list = pane.getStates();
 		BirdName name = (BirdName)list.get(0);
 		BirdFamily family = (BirdFamily)list.get(1);
-		BirdLocation location = new BirdLocation((String)list.get(2));
-		BirdColor color = new BirdColor((String)list.get(3));
-		BirdSize size = new BirdSize((String)list.get(4));
-		BirdTimeActive timeActive = ((BirdTimeActive)list.get(5));
+		BirdLocation location = (BirdLocation)list.get(2);
+		BirdColor color = (BirdColor)list.get(3);
+		BirdSize size = (BirdSize)list.get(4);
+		BirdTimeActive timeActive = (BirdTimeActive)list.get(5);
 		BirdSearch birdSearch = new BirdSearch(c.getBirds(), name, color, family, location, size, timeActive);
 		c.addNewBirdSearch(birdSearch);
     }
-
-
 }
