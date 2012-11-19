@@ -114,9 +114,11 @@ public class SearchPane extends JPanel {
 		
 		JButton ExecuteSearchButton = new JButton("  Search  ");
 		ExecuteSearchButton.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		ExecuteSearchButton.addActionListener(new SearchButtonActionListener(this, c));
 		
 		JButton ResetCriteriaButton = new JButton("Reset");
 		ResetCriteriaButton.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		ResetCriteriaButton.addActionListener(new ResetButtonActionListener(this));
 		
 		GroupLayout gl_searchPane = new GroupLayout(this);
 		gl_searchPane.setHorizontalGroup(
@@ -188,6 +190,10 @@ public class SearchPane extends JPanel {
 		setLayout(gl_searchPane);
 	}
 	
+	/**
+	 * 
+	 * @return List<Object> in order name, family, location, color, size, and timeactive
+	 */
 	public List<Object> getStates(){
 		List<Object> states = new ArrayList<Object>();
 		if(nameEntered.getTextEntered().equals("")){
