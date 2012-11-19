@@ -1,35 +1,35 @@
 package birdProgram;
 
-public class BirdFavorites 
-{
+/*import java.io.IOException; 
+import java.io.ObjectStreamException;
+import java.io.Serializable;*/
+import java.util.*;
 
-	private boolean isFav;
-	private boolean removeFav;
+//public class BirdFavorites implements Serializable { Not ready to be implemented, more research and testing needed.
+public class BirdFavorites  {
+	private static final long serialVersionUID = 1L;
+	private List<Bird> favorites;
 	
-	public BirdFavorites()
-	{
-		isFav = false;
-		removeFav = false;
+	public BirdFavorites(){
+		favorites = new ArrayList<Bird>();
 	}
-	public BirdFavorites(boolean favorite, boolean notFav)
-	{
-		isFav = favorite;
-		removeFav = notFav;
+	
+	public boolean addFavorite(Bird bird){
+		return favorites.add(bird);
 	}
-
-	public boolean isFav() {
-		return isFav;
+	
+	public boolean removeFavorite(Bird bird){
+		return favorites.remove(bird);
 	}
-
-	public void setFav(boolean isFav) {
-		this.isFav = isFav;
+	
+	public List<Bird> getFavorites(){
+		return favorites;
 	}
-
-	public boolean isRemoveFav() {
-		return removeFav;
+	/* 
+	private void writeObject(java.io.ObjectOutputStream out)throws IOException{
+		out.defaultWriteObject();
 	}
-
-	public void setRemoveFav(boolean removeFav) {
-		this.removeFav = removeFav;
-	}
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+		in.defaultReadObject();
+	}*/
 }
