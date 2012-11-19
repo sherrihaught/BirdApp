@@ -1,15 +1,24 @@
 package birdProgram;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BirdSearchResults
 {
-	List<BirdSearch> searches;
+	LinkedList<BirdSearch> searches;
 	
 	public BirdSearchResults()
 	{
-		searches = new ArrayList<BirdSearch>();
+		searches = new LinkedList<BirdSearch>();
+	}
+	
+	public void add(BirdSearch searchResults){
+		
+		searches.addLast(searchResults);
+	}
+	
+	public BirdSearch getLast(){
+		return searches.getLast();
 	}
 	
 	public List<Bird> getSearchResults(BirdSearch current){ //pass tag?
@@ -18,7 +27,7 @@ public class BirdSearchResults
 				return s.getBirds();
 			}
 		}
-		return new ArrayList<Bird>();
+		return new LinkedList<Bird>();
 	}
 	
 	

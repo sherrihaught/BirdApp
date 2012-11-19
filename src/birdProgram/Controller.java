@@ -30,7 +30,11 @@ public class Controller {
 	}
 	
 	public BirdSearch getLastSearch(){
-		return results.getLast(birds.getBirds());
+		return results.getLast();
+	}
+	
+	public void addNewBirdSearch(BirdSearch searchResults){
+		results.add(searchResults);
 	}
 	
 	public List<Bird> getBirds(){
