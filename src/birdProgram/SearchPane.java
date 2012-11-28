@@ -44,7 +44,6 @@ public class SearchPane extends JPanel {
 		JTextField NameCriteriaEntry = new JTextField();
 		NameCriteriaEntry.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		nameEntered = new TextEntryListener(NameCriteriaEntry);
-		NameCriteriaEntry.addKeyListener(nameEntered);
 		
 		JLabel FamilyCriteriaLabel = new JLabel("Family: ");
 		FamilyCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -53,13 +52,12 @@ public class SearchPane extends JPanel {
 		JTextField FamilyCriteriaEntry = new JTextField();
 		FamilyCriteriaEntry.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		familyEntered = new TextEntryListener(FamilyCriteriaEntry);
-		FamilyCriteriaEntry.addKeyListener(familyEntered);
 		
 		JLabel RegionCriteriaLabel = new JLabel("Region: ");
 		RegionCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		RegionCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
 		
-		JComboBox RegionDropDown = new JComboBox(c.getPossibleLocations());
+		JComboBox<BirdLocation> RegionDropDown = new JComboBox<BirdLocation>(c.getPossibleLocations());
 		RegionDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		locationChosen = new DropDownListener(RegionDropDown);
 		RegionDropDown.addMouseListener(locationChosen);
@@ -68,7 +66,7 @@ public class SearchPane extends JPanel {
 		ColorCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		ColorCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
 		
-		JComboBox ColorDropDown = new JComboBox(c.getPossibleColors());
+		JComboBox<BirdColor> ColorDropDown = new JComboBox<BirdColor>(c.getPossibleColors());
 		ColorDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		colorChosen = new DropDownListener(ColorDropDown);
 		ColorDropDown.addMouseListener(colorChosen);
@@ -77,7 +75,7 @@ public class SearchPane extends JPanel {
 		SizeCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		SizeCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
 		
-		JComboBox SizeDropDown = new JComboBox(c.getPossibleSizes());
+		JComboBox<BirdSize> SizeDropDown = new JComboBox<BirdSize>(c.getPossibleSizes());
 		SizeDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		sizeChosen = new DropDownListener(SizeDropDown);
 		SizeDropDown.addMouseListener(sizeChosen);
@@ -190,9 +188,7 @@ public class SearchPane extends JPanel {
 		setLayout(gl_searchPane);
 	}
 	
-	/**
-	 * 
-	 * @return List<Object> in order name, family, location, color, size, and timeactive
+	/**@return List<Object> in order name, family, location, color, size, time active
 	 */
 	public List<Object> getStates(){
 		List<Object> states = new ArrayList<Object>();

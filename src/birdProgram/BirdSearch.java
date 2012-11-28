@@ -22,7 +22,6 @@ public class BirdSearch{
 	}
 	
 	private void searchBirds(List<Bird> birdList, BirdName name, BirdColor color, BirdFamily family, BirdLocation location, BirdSize size, BirdTimeActive timeActive){
-		// results = new ArrayList<Bird>();
 		results = birdList; // initialization
 		if(name != null)
 			getBirdsByName(name);
@@ -33,54 +32,99 @@ public class BirdSearch{
 		if(location != null)
 			getBirdsByLocation(location);
 		if(size != null)
-			getBirdsByTimeActive(timeActive);
-		if(timeActive != null)
 			getBirdsBySize(size);
+		if(timeActive != null)
+			getBirdsByTimeActive(timeActive);
 	}
 	
 	public List<Bird> getBirds(){
+		System.out.println(results);
 		return results;
 	}
 	
 	private void getBirdsByName(BirdName name){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getName().get().equals(name.get()))
-				results.remove(results.get(i));
+			if(!results.get(i).getName().get().toLowerCase().contains(name.get().toLowerCase())){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	
 	private void getBirdsByTimeActive(BirdTimeActive timeActive){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getTimeActive().contains(timeActive))
-				results.remove(results.get(i));
+			List<BirdTimeActive> times = results.get(i).getTimeActive();
+			boolean found = false;
+			for(BirdTimeActive time : times){
+				if(time.equals(timeActive)){
+					found = true;
+					break;
+				}
+			}
+			if(!found){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	
 	private void getBirdsByColor(BirdColor color){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getColors().contains(color))
-				results.remove(results.get(i));
+			List<BirdColor> colors = results.get(i).getColors();
+			boolean found = false;
+			for(BirdColor col : colors){
+				if(col.equals(color)){
+					found = true;
+					break;
+				}
+			}
+			if(!found){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	
 	private void getBirdsBySize(BirdSize size){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getSize().equals(size))
-				results.remove(results.get(i));
+			if(!results.get(i).getSize().equals(size)){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	
 	private void getBirdsByFamily(BirdFamily family){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getFamilies().contains(family))
-				results.remove(results.get(i));
+			List<BirdFamily> fams = results.get(i).getFamilies();
+			boolean found = false;
+			for(BirdFamily fam : fams){
+				if(fam.get().toLowerCase().contains(family.get().toLowerCase())){
+					found = true;
+					break;
+				}
+			}
+			if(!found){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	
 	private void getBirdsByLocation(BirdLocation location){
 		for(int i=0;i<results.size();i++){
-			if(!results.get(i).getLocations().contains(location))
-				results.remove(results.get(i));
+			List<BirdLocation> locs = results.get(i).getLocations();
+			boolean found = false;
+			for(BirdLocation loc : locs){
+				if(loc.equals(location)){
+					found = true;
+					break;
+				}
+			}
+			if(!found){
+				results.remove(i);
+				i--;
+			}
 		}
 	}
 	

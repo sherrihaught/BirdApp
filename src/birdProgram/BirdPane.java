@@ -3,16 +3,10 @@ package birdProgram;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -26,8 +20,22 @@ public class BirdPane extends JPanel {
     private static final long serialVersionUID = 1L;
     private FavoriteButtonListener Favorite;
     private Bird bird;
+    private Dimension currScreen;
 
     public BirdPane(Dimension currScreen, Bird bird, Controller c) { 
+    	this.currScreen = currScreen;
+    	this.bird = bird;
+    	if(bird != null){
+    		setPane(bird, c);
+    	}
+    }
+    
+    public Bird getBird(){
+    	return bird;
+    }
+    
+    public void setPane(Bird bird, Controller c){
+    	removeAll();
     	this.bird = bird;
     	int largeSize = (int)currScreen.getWidth()/10;
     	int medSize = (int)currScreen.getWidth()/90;
@@ -44,59 +52,41 @@ public class BirdPane extends JPanel {
         	favorite.setText("Not Favorite");
         }
 
-
-//        if(favorite.isSelected()==false){
-//            try {
-//                Image img = ImageIO.read(getClass().getResource("notMyFav.jpg"));
-//                favorite.setIcon(new ImageIcon(img));
-//            } catch (IOException ex) {
-//                Logger.getLogger(BirdPane.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        else{
-//            try {
-//                Image img2 = ImageIO.read(getClass().getResource("myFav.jpg"));
-//                favorite.setIcon(new ImageIcon(img2));
-//            } catch (IOException ex) {
-//                Logger.getLogger(BirdPane.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-        
 		JLabel Name = new JLabel(bird.getName().toString());
 		Name.setFont(new Font("Arial", Font.BOLD, medSize *2));
 		
 		JLabel Fams = new JLabel("Families:" );
 		Fams.setFont(new Font("Arial", Font.BOLD, smallSize));
 		
-		DefaultListModel famList = new DefaultListModel();
+		DefaultListModel<BirdFamily> famList = new DefaultListModel<BirdFamily>();
 		List<BirdFamily> bFam = bird.getFamilies();
 		for(BirdFamily fam: bFam){
 			famList.addElement(fam);
 		}
-		JScrollPane Family = new JScrollPane(new JList(famList));
+		JScrollPane Family = new JScrollPane(new JList<BirdFamily>(famList));
 		Family.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		
 		JLabel Locs = new JLabel("Regions found in:" );
 		Locs.setFont(new Font("Arial", Font.BOLD, smallSize));
 		
-		DefaultListModel locList = new DefaultListModel();
+		DefaultListModel<BirdLocation> locList = new DefaultListModel<BirdLocation>();
 		List<BirdLocation> bLoc = bird.getLocations();
 		for(BirdLocation loc: bLoc){
 			locList.addElement(loc);
 		}
-		JScrollPane Location = new JScrollPane(new JList(locList));
+		JScrollPane Location = new JScrollPane(new JList<BirdLocation>(locList));
 		Location.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		Location.setBackground(new Color(139, 123, 139));
 		
 		JLabel Colors = new JLabel("Colors:" );
 		Colors.setFont(new Font("Arial", Font.BOLD, smallSize));
 		
-		DefaultListModel colorList = new DefaultListModel();
+		DefaultListModel<BirdColor> colorList = new DefaultListModel<BirdColor>();
 		List<BirdColor> bColor = bird.getColors();
 		for(BirdColor color: bColor){
 			colorList.addElement(color);
 		}
-		JScrollPane Color = new JScrollPane(new JList(colorList));
+		JScrollPane Color = new JScrollPane(new JList<BirdColor>(colorList));
 		Color.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 
 		JLabel Size = new JLabel("Size:" );
@@ -185,4 +175,23 @@ public class BirdPane extends JPanel {
 
         setLayout(birdPaneLayout);
     }
+    
+//    private void imageStuff(){
+//      if(favorite.isSelected()==false){
+//      try {
+//          Image img = ImageIO.read(getClass().getResource("notMyFav.jpg"));
+//          favorite.setIcon(new ImageIcon(img));
+//      } catch (IOException ex) {
+//          Logger.getLogger(BirdPane.class.getName()).log(Level.SEVERE, null, ex);
+//      }
+//  }
+//  else{
+//      try {
+//          Image img2 = ImageIO.read(getClass().getResource("myFav.jpg"));
+//          favorite.setIcon(new ImageIcon(img2));
+//      } catch (IOException ex) {
+//          Logger.getLogger(BirdPane.class.getName()).log(Level.SEVERE, null, ex);
+//      }
+//  }
+//    }
 }

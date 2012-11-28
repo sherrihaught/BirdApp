@@ -58,4 +58,8 @@ public class BackgroundFrame extends JFrame {
 	public FavoritesPane getFavoritesPane(){
 		return favoritesPane;
 	}
+	
+	public void switchPane(int index){
+		((JTabbedPane) getContentPane()).setSelectedIndex(index);
+	}
 }

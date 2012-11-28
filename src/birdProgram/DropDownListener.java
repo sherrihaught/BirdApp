@@ -7,10 +7,11 @@ import javax.swing.JComboBox;
 
 public class DropDownListener implements MouseListener{
 	private BirdAttribute selected;
-	private JComboBox dropDown;
+	private JComboBox<? extends BirdAttribute> dropDown;
 	
-	public DropDownListener(JComboBox dropDown){
+	public DropDownListener(JComboBox<? extends BirdAttribute> dropDown){
 		this.dropDown = dropDown;
+		setDefault();
 	}
 
 	public void mouseClicked(MouseEvent e){
@@ -30,7 +31,7 @@ public class DropDownListener implements MouseListener{
 	}
 
 	public BirdAttribute getSelected(){
-		if(selected.toString().equals("Any")){
+		if((selected = (BirdAttribute)dropDown.getSelectedItem()).toString().equals("Any")){
 			return null;
 		}else{
 			return selected;

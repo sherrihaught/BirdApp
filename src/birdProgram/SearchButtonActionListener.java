@@ -2,6 +2,7 @@ package birdProgram;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +24,8 @@ public class SearchButtonActionListener implements ActionListener {
 		BirdColor color = (BirdColor)list.get(3);
 		BirdSize size = (BirdSize)list.get(4);
 		BirdTimeActive timeActive = (BirdTimeActive)list.get(5);
-		BirdSearch birdSearch = new BirdSearch(c.getBirds(), name, color, family, location, size, timeActive);
-		c.addNewBirdSearch(birdSearch);
+		BirdSearch birdSearch = new BirdSearch(new ArrayList<Bird>(c.getBirds()), name, color, family, location, size, timeActive);
+		c.addNewSearch(birdSearch);
+		c.updateResults();
     }
 }

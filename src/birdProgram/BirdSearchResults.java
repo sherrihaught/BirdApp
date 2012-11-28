@@ -12,11 +12,17 @@ public class BirdSearchResults
 	}
 	
 	public void add(BirdSearch searchResults){
-		
+		if(searches.size() == 10){
+			searches.removeFirst();
+		}
 		searches.addLast(searchResults);
+		System.out.println(this.toString());
 	}
 	
 	public BirdSearch getLast(){
-		return searches.getLast();
+		if(searches.size() > 0){
+			return searches.getLast();
+		}
+		return null;
 	}	
 }

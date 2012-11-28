@@ -7,7 +7,7 @@ import java.util.*;
 
 //public class BirdFavorites implements Serializable { Not ready to be implemented, more research and testing needed.
 public class BirdFavorites  {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	private List<Bird> favorites;
 	
 	public BirdFavorites(){
