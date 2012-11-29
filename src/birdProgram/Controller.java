@@ -9,14 +9,14 @@ import javax.swing.JFrame;
 //Intermediary between View classes and Model classes
 public class Controller {
 
-	//private BirdFavorites favs;
+	private BirdFavorites favs;
 	private Birds birds;
 	private BirdSearchResults results;
 	private JFrame frame;
 	private Bird selection;
 	
 	public Controller() throws FileNotFoundException{
-		//favs = new BirdFavorites(); //loads the user-marked favorite birds
+		favs = new BirdFavorites(); //loads the user-marked favorite birds
 		birds = new Birds("birds.txt"); //loads the birds in the current database
 		results = new BirdSearchResults(); //keeps the 10 most recent searches
 	}
@@ -27,9 +27,11 @@ public class Controller {
 	
 	//Results Methods
 	//------------------------------------------------
-	public void updateResults(){
+	public void updateResults(boolean switchTo){
 		((BackgroundFrame) frame).getResultsPane().displayResults();
-		((BackgroundFrame) frame).switchPane(1); //display Results pane
+		if(switchTo){
+			((BackgroundFrame) frame).switchPane(1); //display Results pane
+		}
 	}
 	
 	public BirdSearch getLastSearch(){
@@ -46,9 +48,13 @@ public class Controller {
 	
 	//Bird Methods
 	//-------------------------------------------------------
-	public void updateBird(){
-		((BackgroundFrame) frame).getBirdPane().setPane(selection, this);
-		((BackgroundFrame) frame).switchPane(2);
+	public void updateBird(boolean switchTo){
+		if(selection != null){
+			((BackgroundFrame) frame).getBirdPane().setPane(selection, this);
+		}
+		if(switchTo){
+			((BackgroundFrame) frame).switchPane(2);
+		}
 	}
 	
 	public void setBird(Bird bird){
@@ -62,24 +68,38 @@ public class Controller {
 	//Favorites Methods
 	//---------------------------------------------------------
 	public void updateFavorites(){
+		((BackgroundFrame) frame).getFavoritesPane().displayFavorites();	
 	}
 	
 	public void setFavorite(Bird bird, boolean favorite) {
-		//add or remove bird from favs
+		if(favorite){
+			if(!isFavorite(bird)){
+				favs.addFavorite(bird);
+			}
+		}else{
+			if(isFavorite(bird)){
+				favs.removeFavorite(bird);
+			}
+		}
 	}
 	
 	public boolean isFavorite(Bird b){
-		//if (favs.getBirds().contains(b)){
-		//	return true;
-		//}else{
-			return false;
-		//}
+		List<Bird> favorites = favs.getFavorites();
+		for(Bird fav : favorites){
+			if(fav.equals(b)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	//public List<Bird> getFavorites(){
-		//return favs.getBirds();
-	//}
+	public List<Bird> getFavorites(){
+		return favs.getFavorites();
+	}
 	
+	public ResultsPane getResultsPane(){
+		return ((BackgroundFrame) frame).getResultsPane();
+	}
 	
 	
 	public Vector<BirdSize> getPossibleSizes(){

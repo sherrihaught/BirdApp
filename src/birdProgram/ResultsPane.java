@@ -10,7 +10,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -28,8 +27,8 @@ public class ResultsPane extends JPanel {
 	private Dimension currScreen;
 	private Controller c;
 	private GroupLayout gl_resultsPane;
-	private ParallelGroup horizB;
 	private SequentialGroup vert;
+	private ParallelGroup horizB;
 	private JPanel birds;
 
 	public ResultsPane(Dimension currScreen, Controller c) {
@@ -73,22 +72,18 @@ public class ResultsPane extends JPanel {
 		
 		horizB.addComponent(SortBy).addGroup(gl_resultsPane.createSequentialGroup()
 				.addGap(largeSize*3)
-				.addComponent(SortByName)
-				.addGap(largeSize*8+25)
-				.addComponent(SortByFamily)
-				.addGap(largeSize*4)
-				.addComponent(SortByLocation)
-				.addGap(largeSize*4-5)
-				.addComponent(SortByColor)
-				.addGap(largeSize*4)
-				.addComponent(SortBySize));
+				.addComponent(SortByName, largeSize*14, largeSize*14, largeSize*14)
+				.addComponent(SortByFamily, largeSize*8, largeSize*8, largeSize*8)
+				.addComponent(SortByLocation, largeSize*8, largeSize*8, largeSize*8)
+				.addComponent(SortByColor, largeSize*8, largeSize*8, largeSize*8)
+				.addComponent(SortBySize, largeSize*8, largeSize*8, largeSize*8));
 		
 		vert.addContainerGap().addComponent(SortBy).addGap(20).addGroup(gl_resultsPane.createParallelGroup()
-				.addComponent(SortByName)
-				.addComponent(SortByFamily)
-				.addComponent(SortByLocation)
-				.addComponent(SortByColor)
-				.addComponent(SortBySize)).addGap(10);
+				.addComponent(SortByName, largeSize, largeSize, largeSize)
+				.addComponent(SortByFamily, largeSize, largeSize, largeSize)
+				.addComponent(SortByLocation, largeSize, largeSize, largeSize)
+				.addComponent(SortByColor, largeSize, largeSize, largeSize)
+				.addComponent(SortBySize, largeSize, largeSize, largeSize)).addGap(10);
 	
 		displayResults();
 		
@@ -101,8 +96,9 @@ public class ResultsPane extends JPanel {
 	public void displayResults(){
 		BirdSearch last = c.getLastSearch();
 		if(last != null){
-			gl_resultsPane.removeLayoutComponent(birds);
-			birds.removeAll();
+			gl_resultsPane.removeLayoutComponent(birds); //remove panel from layout
+			birds.removeAll();							 //clear panel
+														 //change panel contents...
 			GroupLayout gl_birdsBlock = new GroupLayout(birds);
 			ParallelGroup horizontal = gl_birdsBlock.createParallelGroup(Alignment.LEADING);
 			SequentialGroup vertical = gl_birdsBlock.createSequentialGroup();
@@ -114,7 +110,7 @@ public class ResultsPane extends JPanel {
 			}
 			gl_birdsBlock.setHorizontalGroup(horizontal);
 			gl_birdsBlock.setVerticalGroup(vertical);
-			birds.setLayout(gl_birdsBlock);		
+			birds.setLayout(gl_birdsBlock);
 		}else{
 			birds = new JPanel();
 		}
@@ -122,12 +118,12 @@ public class ResultsPane extends JPanel {
 		vert.addComponent(birds);
 	}
 	
-	private JPanel makeBirdBox(Bird b){
+	public JPanel makeBirdBox(Bird b){
 		JPanel bBox = new JPanel();
 		bBox.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		JButton Name = new JButton(b.getName().toString());
-		Name.setFont(new Font("Times New Roman", Font.PLAIN, largeSize));
+		Name.setFont(new Font("Times New Roman", Font.PLAIN, (4*largeSize)/3));
 		BirdListener selecter = new BirdListener(b, c);
 		Name.addActionListener(selecter);
 		
@@ -156,29 +152,26 @@ public class ResultsPane extends JPanel {
 		Color.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		
 		JLabel Size = new JLabel(b.getSize().toString());
-		Size.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		Size.setFont(new Font("Times New Roman", Font.PLAIN, (3*smallSize)/2));
 		
 		JButton Favorite = new JButton();
-		Favorite.setIcon(new ImageIcon("FavStar.jpg"));
-		Favorite.setSelectedIcon(new ImageIcon("FavStarSel.jpg"));
-		if(b.getName().toString().equals("Upland Sandpiper")){
-				Favorite.setSelected(true);
-		}
+		FavoriteButtonListener checkFav = new FavoriteButtonListener(Favorite, b, c);
+		Favorite.addActionListener(checkFav);
 		
 		GroupLayout gl_bBox = new GroupLayout(bBox);
 		gl_bBox.setHorizontalGroup(gl_bBox.createSequentialGroup()
 				.addGap(largeSize*3)
-				.addComponent(Name, largeSize*10, largeSize*10, largeSize*10)
+				.addComponent(Name, largeSize*12, largeSize*12, largeSize*12)
 				.addGap(largeSize*2)
-				.addComponent(Family, largeSize*5, largeSize*5, largeSize*5)
+				.addComponent(Family, largeSize*6, largeSize*6, largeSize*6)
 				.addGap(largeSize*2)
-				.addComponent(Location, largeSize*5, largeSize*5, largeSize*5)
+				.addComponent(Location, largeSize*6, largeSize*6, largeSize*6)
 				.addGap(largeSize*2)
-				.addComponent(Color, largeSize*5, largeSize*5, largeSize*5)
+				.addComponent(Color, largeSize*6, largeSize*6, largeSize*6)
 				.addGap(largeSize*2)
-				.addComponent(Size, largeSize*5, largeSize*5, largeSize*5)
+				.addComponent(Size, largeSize*6, largeSize*6, largeSize*6)
 				.addGap(largeSize*2)
-				.addComponent(Favorite, largeSize*2, largeSize*2, largeSize*2)
+				.addComponent(Favorite, largeSize*3, largeSize*3, largeSize*3)
 				.addGap(largeSize*4));
 		
 		gl_bBox.setVerticalGroup(gl_bBox.createParallelGroup(Alignment.CENTER)
@@ -188,7 +181,7 @@ public class ResultsPane extends JPanel {
 					.addComponent(Location, largeSize*5, largeSize*5, largeSize*5)
 					.addComponent(Color, largeSize*5, largeSize*5, largeSize*5)
 					.addComponent(Size, largeSize*5, largeSize*5, largeSize*5)
-					.addComponent(Favorite, largeSize*2, largeSize*2, largeSize*2));
+					.addComponent(Favorite, largeSize*3, largeSize*3, largeSize*3));
 		bBox.setLayout(gl_bBox);
 		return bBox;
 	}

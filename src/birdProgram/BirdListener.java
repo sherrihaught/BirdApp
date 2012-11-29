@@ -14,6 +14,6 @@ public class BirdListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e){
 		c.setBird(b);
-		c.updateBird();
+		c.updateBird(true);
 	}
 }

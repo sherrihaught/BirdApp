@@ -38,7 +38,6 @@ public class BirdSearch{
 	}
 	
 	public List<Bird> getBirds(){
-		System.out.println(results);
 		return results;
 	}
 	

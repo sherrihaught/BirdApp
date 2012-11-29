@@ -26,6 +26,6 @@ public class SearchButtonActionListener implements ActionListener {
 		BirdTimeActive timeActive = (BirdTimeActive)list.get(5);
 		BirdSearch birdSearch = new BirdSearch(new ArrayList<Bird>(c.getBirds()), name, color, family, location, size, timeActive);
 		c.addNewSearch(birdSearch);
-		c.updateResults();
+		c.updateResults(true);
     }
 }

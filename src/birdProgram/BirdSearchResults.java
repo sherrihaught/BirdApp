@@ -16,7 +16,6 @@ public class BirdSearchResults
 			searches.removeFirst();
 		}
 		searches.addLast(searchResults);
-		System.out.println(this.toString());
 	}
 	
 	public BirdSearch getLast(){

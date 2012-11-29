@@ -37,7 +37,7 @@ public class BackgroundFrame extends JFrame {
         JScrollPane birdScrollView = new JScrollPane(birdPane);
 		tabBackground.addTab("   Bird   ", birdScrollView);
 		
-		favoritesPane = new FavoritesPane(currScreen);
+		favoritesPane = new FavoritesPane(currScreen, c);
 		tabBackground.addTab("   Favorites   ", favoritesPane);
 		
 		setContentPane(tabBackground);

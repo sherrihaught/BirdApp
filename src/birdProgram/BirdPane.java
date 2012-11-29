@@ -46,11 +46,6 @@ public class BirdPane extends JPanel {
         JButton favorite = new JButton();
         Favorite = new FavoriteButtonListener(favorite, bird, c);
         favorite.addActionListener(Favorite);
-        if(Favorite.getFavoriteStatus()){
-        	favorite.setText("Favorite");
-        }else{
-        	favorite.setText("Not Favorite");
-        }
 
 		JLabel Name = new JLabel(bird.getName().toString());
 		Name.setFont(new Font("Arial", Font.BOLD, medSize *2));
@@ -122,46 +117,46 @@ public class BirdPane extends JPanel {
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Name, largeSize*2, largeSize*2, largeSize*2)
 									.addGap(medSize*3)
-									.addComponent(favorite, medSize*7, medSize*7, medSize*7))
+									.addComponent(favorite, medSize*3, medSize*3, medSize*3))
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Fams, medSize*7, medSize*7, medSize*7)
 									.addGap(medSize*2)
-									.addComponent(Family, medSize*4, medSize*4, medSize*4))
+									.addComponent(Family, medSize*7, medSize*7, medSize*7))
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Locs, medSize*7, medSize*7, medSize*7)
 									.addGap(medSize*2)
-									.addComponent(Location, medSize*4, medSize*4, medSize*4))
+									.addComponent(Location, medSize*7, medSize*7, medSize*7))
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Colors, medSize*7, medSize*7, medSize*7)
 									.addGap(medSize*2)
-									.addComponent(Color, medSize*4, medSize*4, medSize*4))
+									.addComponent(Color, medSize*7, medSize*7, medSize*7))
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Size, medSize*7, medSize*7, medSize*7)
 									.addGap(medSize*2)
-									.addComponent(BirdSize, medSize*4, medSize*4, medSize*4))
+									.addComponent(BirdSize, medSize*7, medSize*7, medSize*7))
 							.addGroup(birdPaneLayout.createSequentialGroup()
 									.addComponent(Time, medSize*7, medSize*7, medSize*7)
 									.addGap(medSize*2)									
-									.addComponent(BirdActiveTime, medSize*4, medSize*4, medSize*4))
+									.addComponent(BirdActiveTime, medSize*7, medSize*7, medSize*7))
 							.addComponent(DescriptionScroll, largeSize*3, largeSize*3, largeSize*3)));
 						
         birdPaneLayout.setVerticalGroup(birdPaneLayout.createSequentialGroup()
         		.addGap((int) currScreen.getHeight() / 10)
         		.addGroup(birdPaneLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
         				.addComponent(Name, 3*medSize, 3*medSize, 3*medSize)
-        				.addComponent(favorite, 2*medSize, 2*medSize, 2*medSize))
+        				.addComponent(favorite, 3*medSize, 3*medSize, 3*medSize))
                 .addGap(largeSize/5)  
                 .addGroup(birdPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                 		.addComponent(Fams, 2*medSize, 2*medSize, 2*medSize)
-                		.addComponent(Family, 3*medSize, 3*medSize, 3*medSize))
+                		.addComponent(Family, 4*medSize, 4*medSize, 4*medSize))
                 .addGap(largeSize/7)
                 .addGroup(birdPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                 		.addComponent(Locs, 2*medSize, 2*medSize, 2*medSize)
-                		.addComponent(Location, 3*medSize, 3*medSize, 3*medSize))
+                		.addComponent(Location, 6*medSize, 6*medSize, 6*medSize))
                 .addGap(largeSize/7)
                 .addGroup(birdPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                 		.addComponent(Colors, 2*medSize, 2*medSize, 2*medSize)
-                		.addComponent(Color, 3*medSize, 3*medSize, 3*medSize))
+                		.addComponent(Color, 6*medSize, 6*medSize, 6*medSize))
                 .addGap(largeSize/7)
                 .addGroup(birdPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                 		.addComponent(Size, 2*medSize, 2*medSize, 2*medSize)
@@ -171,7 +166,7 @@ public class BirdPane extends JPanel {
                 		.addComponent(Time, 2*medSize, 2*medSize, 2*medSize)
                 		.addComponent(BirdActiveTime, 2*medSize, 2*medSize, 2*medSize))
                 .addGap(largeSize/3)
-                .addComponent(DescriptionScroll, largeSize, largeSize, largeSize));
+                .addComponent(DescriptionScroll, largeSize*3, largeSize*3, largeSize*3));
 
         setLayout(birdPaneLayout);
     }
