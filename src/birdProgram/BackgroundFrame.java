@@ -25,19 +25,26 @@ public class BackgroundFrame extends JFrame {
 		JTabbedPane tabBackground = new JTabbedPane();
 		tabBackground.setFont(new Font("Calibri", Font.BOLD, (int)currScreen.getWidth()/50));
 		
-		searchPane = new SearchPane(currScreen, c);		
+		Color search = new Color(65, 146, 141);
+		searchPane = new SearchPane(currScreen, c, search);
+		searchPane.setBackground(search);
 		tabBackground.addTab("   Search   ", searchPane);
 		
-		resultsPane = new ResultsPane(currScreen, c);
+		Color result = new Color(126 ,184 ,118);
+		resultsPane = new ResultsPane(currScreen, c, result);
+		resultsPane.setBackground(result);
 		JScrollPane resultsScrollView = new JScrollPane(resultsPane);
 		tabBackground.addTab("   Search Results   ", resultsScrollView);
 		
-		birdPane = new BirdPane(currScreen, c.getSelectedBird(), c);
-		birdPane.setBackground(new Color(139, 123, 139));
+		Color bird = new Color(139, 123, 139);
+		birdPane = new BirdPane(currScreen, c.getSelectedBird(), c, bird);
+		birdPane.setBackground(bird);
         JScrollPane birdScrollView = new JScrollPane(birdPane);
 		tabBackground.addTab("   Bird   ", birdScrollView);
 		
-		favoritesPane = new FavoritesPane(currScreen, c);
+		Color favorite = new Color(179, 111, 111);
+		favoritesPane = new FavoritesPane(currScreen, c, favorite);
+		favoritesPane.setBackground(favorite);
 		tabBackground.addTab("   Favorites   ", favoritesPane);
 		
 		setContentPane(tabBackground);

@@ -46,6 +46,18 @@ public class Controller {
 		return birds.getBirds();
 	}
 	
+	public void updateSorting(String pane, String sortCategory){
+		if(pane.toLowerCase().equals("results")){
+			ResultsPane r = ((BackgroundFrame) frame).getResultsPane();
+			r.setSortCategory(sortCategory);
+			r.displayResults();
+		}else{
+			FavoritesPane f= ((BackgroundFrame) frame).getFavoritesPane();
+			f.setSortCategory(sortCategory);
+			f.displayFavorites();
+		}
+	}
+	
 	//Bird Methods
 	//-------------------------------------------------------
 	public void updateBird(boolean switchTo){
@@ -183,7 +195,7 @@ public class Controller {
 		colors.add(new BirdColor("Black"));
 		colors.add(new BirdColor("White"));
 		colors.add(new BirdColor("Brown"));
-		colors.add(new BirdColor("Grey"));
+		colors.add(new BirdColor("Gray"));
 		return colors;
 	}
 }

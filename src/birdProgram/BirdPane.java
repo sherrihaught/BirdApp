@@ -21,10 +21,12 @@ public class BirdPane extends JPanel {
     private FavoriteButtonListener Favorite;
     private Bird bird;
     private Dimension currScreen;
+    private Color background;
 
-    public BirdPane(Dimension currScreen, Bird bird, Controller c) { 
+    public BirdPane(Dimension currScreen, Bird bird, Controller c, Color background) { 
     	this.currScreen = currScreen;
     	this.bird = bird;
+    	this.background = background;
     	if(bird != null){
     		setPane(bird, c);
     	}
@@ -46,6 +48,7 @@ public class BirdPane extends JPanel {
         JButton favorite = new JButton();
         Favorite = new FavoriteButtonListener(favorite, bird, c);
         favorite.addActionListener(Favorite);
+        favorite.setBackground(new Color(255, 255, 255));
 
 		JLabel Name = new JLabel(bird.getName().toString());
 		Name.setFont(new Font("Arial", Font.BOLD, medSize *2));
@@ -71,7 +74,7 @@ public class BirdPane extends JPanel {
 		}
 		JScrollPane Location = new JScrollPane(new JList<BirdLocation>(locList));
 		Location.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
-		Location.setBackground(new Color(139, 123, 139));
+		Location.setBackground(background);
 		
 		JLabel Colors = new JLabel("Colors:" );
 		Colors.setFont(new Font("Arial", Font.BOLD, smallSize));

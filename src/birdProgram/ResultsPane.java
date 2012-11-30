@@ -30,29 +30,48 @@ public class ResultsPane extends JPanel {
 	private SequentialGroup vert;
 	private ParallelGroup horizB;
 	private JPanel birds;
+	private Color background;
+	private String sortCategory;
 
-	public ResultsPane(Dimension currScreen, Controller c) {
+	public ResultsPane(Dimension currScreen, Controller c, Color background) {
 		this.currScreen = currScreen;
+		this.background = background;
 		this.c = c;
 		
+		sortCategory = "name";
 		smallSize = (int)currScreen.getWidth()/110;
 		largeSize = (int)currScreen.getWidth()/80;
 		
 		JRadioButton SortByName = new JRadioButton("Name");
 		SortByName.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		SortByName.setSelected(true);
+		RadioListener nameSort = new RadioListener(SortByName, c, "results");
+		SortByName.addMouseListener(nameSort);
+		SortByName.setBackground(background);
 		
 		JRadioButton SortByFamily = new JRadioButton("Family");
 		SortByFamily.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener famSort = new RadioListener(SortByFamily, c, "results");
+		SortByFamily.addMouseListener(famSort);
+		SortByFamily.setBackground(background);
 		
 		JRadioButton SortByLocation = new JRadioButton("Location");
 		SortByLocation.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener locSort = new RadioListener(SortByLocation, c, "results");
+		SortByLocation.addMouseListener(locSort);
+		SortByLocation.setBackground(background);
 
 		JRadioButton SortByColor = new JRadioButton("Color");
 		SortByColor.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener colSort = new RadioListener(SortByColor, c, "results");
+		SortByColor.addMouseListener(colSort);
+		SortByColor.setBackground(background);
 		
 		JRadioButton SortBySize = new JRadioButton("Size");
 		SortBySize.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener sizeSort = new RadioListener(SortBySize, c, "results");
+		SortBySize.addMouseListener(sizeSort);
+		SortBySize.setBackground(background);
 		
 		ButtonGroup SortRadios = new ButtonGroup();
 		SortRadios.add(SortByName);
@@ -93,6 +112,10 @@ public class ResultsPane extends JPanel {
 		repaint();
 	}
 	
+	public void setSortCategory(String sortCategory){
+		this.sortCategory = sortCategory;
+	}
+	
 	public void displayResults(){
 		BirdSearch last = c.getLastSearch();
 		if(last != null){
@@ -102,17 +125,19 @@ public class ResultsPane extends JPanel {
 			GroupLayout gl_birdsBlock = new GroupLayout(birds);
 			ParallelGroup horizontal = gl_birdsBlock.createParallelGroup(Alignment.LEADING);
 			SequentialGroup vertical = gl_birdsBlock.createSequentialGroup();
-			List<Bird> results = last.getBirds();
+			List<Bird> results = SortManager.getSortedBirds(last.getBirds(), sortCategory);
 			for(Bird b: results){
 				JPanel birdBox = makeBirdBox(b);
+				birdBox.setBackground(background);
 				horizontal.addComponent(birdBox, (int)currScreen.getWidth() -50, (int)currScreen.getWidth() -50, (int)currScreen.getWidth() -50);
-				vertical.addGap(20).addComponent(birdBox, largeSize*5+2, largeSize*5+2, largeSize*5+2);
+				vertical.addGap(30).addComponent(birdBox, largeSize*5+2, largeSize*5+2, largeSize*5+2);
 			}
 			gl_birdsBlock.setHorizontalGroup(horizontal);
 			gl_birdsBlock.setVerticalGroup(vertical);
 			birds.setLayout(gl_birdsBlock);
 		}else{
 			birds = new JPanel();
+			birds.setBackground(background);
 		}
 		horizB.addComponent(birds);
 		vert.addComponent(birds);
@@ -126,6 +151,7 @@ public class ResultsPane extends JPanel {
 		Name.setFont(new Font("Times New Roman", Font.PLAIN, (4*largeSize)/3));
 		BirdListener selecter = new BirdListener(b, c);
 		Name.addActionListener(selecter);
+		Name.setBackground(Color.WHITE);
 		
 		DefaultListModel<BirdFamily> famList = new DefaultListModel<BirdFamily>();
 		List<BirdFamily> bFam = b.getFamilies();
@@ -157,6 +183,7 @@ public class ResultsPane extends JPanel {
 		JButton Favorite = new JButton();
 		FavoriteButtonListener checkFav = new FavoriteButtonListener(Favorite, b, c);
 		Favorite.addActionListener(checkFav);
+		Favorite.setBackground(new Color(255, 255, 255));
 		
 		GroupLayout gl_bBox = new GroupLayout(bBox);
 		gl_bBox.setHorizontalGroup(gl_bBox.createSequentialGroup()
@@ -176,7 +203,7 @@ public class ResultsPane extends JPanel {
 		
 		gl_bBox.setVerticalGroup(gl_bBox.createParallelGroup(Alignment.CENTER)
 				.addGroup(gl_bBox.createParallelGroup(Alignment.LEADING))
-					.addComponent(Name, largeSize*5, largeSize*5, largeSize*5)
+					.addComponent(Name, largeSize*3, largeSize*3, largeSize*3)
 					.addComponent(Family, largeSize*5, largeSize*5, largeSize*5)
 					.addComponent(Location, largeSize*5, largeSize*5, largeSize*5)
 					.addComponent(Color, largeSize*5, largeSize*5, largeSize*5)

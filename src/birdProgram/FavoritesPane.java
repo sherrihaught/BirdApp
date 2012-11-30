@@ -1,5 +1,6 @@
 package birdProgram;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.List;
@@ -24,11 +25,16 @@ public class FavoritesPane extends JPanel {
 	private Controller c;
 	private int smallSize;
 	private int largeSize;
+	private Color background;
+	private String sortCategory;
 
-	public FavoritesPane(Dimension currScreen, Controller c) {
+	public FavoritesPane(Dimension currScreen, Controller c, Color background) {
 		this.currScreen = currScreen;
+		this.background = background;
 		this.c = c;
 		favs = new JPanel();
+		favs.setBackground(background);
+		sortCategory = "name";
 		
 		smallSize = (int)currScreen.getWidth()/110;
 		largeSize = (int)currScreen.getWidth()/80;
@@ -36,18 +42,33 @@ public class FavoritesPane extends JPanel {
 		JRadioButton SortByName = new JRadioButton("Name");
 		SortByName.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
 		SortByName.setSelected(true);
+		RadioListener nameSort = new RadioListener(SortByName, c, "favorites");
+		SortByName.addMouseListener(nameSort);
+		SortByName.setBackground(background);
 		
 		JRadioButton SortByFamily = new JRadioButton("Family");
 		SortByFamily.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener famSort = new RadioListener(SortByFamily, c, "favorites");
+		SortByFamily.addMouseListener(famSort);
+		SortByFamily.setBackground(background);
 		
 		JRadioButton SortByLocation = new JRadioButton("Location");
 		SortByLocation.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener locSort = new RadioListener(SortByLocation, c, "favorites");
+		SortByLocation.addMouseListener(locSort);
+		SortByLocation.setBackground(background);
 
 		JRadioButton SortByColor = new JRadioButton("Color");
 		SortByColor.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener colSort = new RadioListener(SortByColor, c, "favorites");
+		SortByColor.addMouseListener(colSort);
+		SortByColor.setBackground(background);
 		
 		JRadioButton SortBySize = new JRadioButton("Size");
 		SortBySize.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		RadioListener sizeSort = new RadioListener(SortBySize, c, "favorites");
+		SortBySize.addMouseListener(sizeSort);
+		SortBySize.setBackground(background);
 		
 		ButtonGroup SortRadios = new ButtonGroup();
 		SortRadios.add(SortByName);
@@ -58,6 +79,7 @@ public class FavoritesPane extends JPanel {
 		
 		JLabel SortBy = new JLabel("Sort Results by: "); 
 		SortBy.setFont(new Font("Times New Roman", Font.PLAIN, largeSize));
+		SortBy.setBackground(background);
 		
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		gl_favoritesPane = new GroupLayout(this);
@@ -88,8 +110,12 @@ public class FavoritesPane extends JPanel {
 		repaint();
 	}
 	
+	public void setSortCategory(String sortCategory){
+		this.sortCategory = sortCategory;
+	}
+	
 	public void displayFavorites(){
-		List<Bird> favorites = c.getFavorites();
+		List<Bird> favorites = SortManager.getSortedBirds(c.getFavorites(), sortCategory);
 		if(favorites != null){ //if no favorites, empty panel is displayed
 			gl_favoritesPane.removeLayoutComponent(favs);
 			favs.removeAll();
@@ -98,6 +124,7 @@ public class FavoritesPane extends JPanel {
 			SequentialGroup vertical = gl_birdsBlock.createSequentialGroup();
 			for(Bird b: favorites){
 				JPanel birdBox = c.getResultsPane().makeBirdBox(b);
+				birdBox.setBackground(background);
 				horizontal.addComponent(birdBox, (int)currScreen.getWidth()-50, (int)currScreen.getWidth()-50, (int)currScreen.getWidth()-50);
 				vertical.addGap(20).addComponent(birdBox, largeSize*5+2, largeSize*5+2, largeSize*5+2);
 			}

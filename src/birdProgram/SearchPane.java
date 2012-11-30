@@ -1,5 +1,6 @@
 package birdProgram;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class SearchPane extends JPanel {
 	private RadioListener anyListener;
 	
 
-	public SearchPane(Dimension currScreen, Controller c){
+	public SearchPane(Dimension currScreen, Controller c, Color background){
 		int largeSize = (int)currScreen.getWidth()/10;
 		int medSize = (int)currScreen.getWidth()/90;
 		int smallSize = (int)currScreen.getWidth()/110;
@@ -40,6 +41,7 @@ public class SearchPane extends JPanel {
 		JLabel NameCriteriaLabel = new JLabel("Name: ");
 		NameCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		NameCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		NameCriteriaLabel.setBackground(background);
 		
 		JTextField NameCriteriaEntry = new JTextField();
 		NameCriteriaEntry.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
@@ -48,6 +50,7 @@ public class SearchPane extends JPanel {
 		JLabel FamilyCriteriaLabel = new JLabel("Family: ");
 		FamilyCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		FamilyCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		FamilyCriteriaLabel.setBackground(background);
 		
 		JTextField FamilyCriteriaEntry = new JTextField();
 		FamilyCriteriaEntry.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
@@ -56,6 +59,7 @@ public class SearchPane extends JPanel {
 		JLabel RegionCriteriaLabel = new JLabel("Region: ");
 		RegionCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		RegionCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		RegionCriteriaLabel.setBackground(background);
 		
 		JComboBox<BirdLocation> RegionDropDown = new JComboBox<BirdLocation>(c.getPossibleLocations());
 		RegionDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
@@ -65,6 +69,7 @@ public class SearchPane extends JPanel {
 		JLabel ColorCriteriaLabel = new JLabel("Color: ");
 		ColorCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		ColorCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		ColorCriteriaLabel.setBackground(background);
 		
 		JComboBox<BirdColor> ColorDropDown = new JComboBox<BirdColor>(c.getPossibleColors());
 		ColorDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
@@ -74,6 +79,7 @@ public class SearchPane extends JPanel {
 		JLabel SizeCriteriaLabel = new JLabel("Size: ");
 		SizeCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		SizeCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		SizeCriteriaLabel.setBackground(background);
 		
 		JComboBox<BirdSize> SizeDropDown = new JComboBox<BirdSize>(c.getPossibleSizes());
 		SizeDropDown.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
@@ -83,26 +89,31 @@ public class SearchPane extends JPanel {
 		JLabel ActivityCriteriaLabel = new JLabel("Activity Time: ");
 		ActivityCriteriaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		ActivityCriteriaLabel.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
+		ActivityCriteriaLabel.setBackground(background);
 		
 		JRadioButton NightRadioButton = new JRadioButton("Night Only");
 		NightRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
-		nightListener = new RadioListener(NightRadioButton);
+		nightListener = new RadioListener(NightRadioButton, c, "search");
 		NightRadioButton.addMouseListener(nightListener);
+		NightRadioButton.setBackground(background);
 		
 		JRadioButton DayRadioButton = new JRadioButton("Day Only");
 		DayRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
-		dayListener = new RadioListener(DayRadioButton);
+		dayListener = new RadioListener(DayRadioButton, c, "search");
 		DayRadioButton.addMouseListener(dayListener);
+		DayRadioButton.setBackground(background);
 		
 		JRadioButton BothRadioButton = new JRadioButton("All hours");
 		BothRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
+		BothRadioButton.setBackground(background);
 
 		
 		JRadioButton AnyRadioButton = new JRadioButton("Any hours");
 		AnyRadioButton.setSelected(true);
 		AnyRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, smallSize));
-		anyListener = new RadioListener(AnyRadioButton);
+		anyListener = new RadioListener(AnyRadioButton, c, "search");
 		AnyRadioButton.addMouseListener(anyListener);
+		AnyRadioButton.setBackground(background);
 		
 		ButtonGroup ActivityRadios = new ButtonGroup();
 		ActivityRadios.add(NightRadioButton);
@@ -113,10 +124,12 @@ public class SearchPane extends JPanel {
 		JButton ExecuteSearchButton = new JButton("  Search  ");
 		ExecuteSearchButton.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
 		ExecuteSearchButton.addActionListener(new SearchButtonActionListener(this, c));
+		ExecuteSearchButton.setBackground(Color.WHITE);
 		
 		JButton ResetCriteriaButton = new JButton("Reset");
 		ResetCriteriaButton.setFont(new Font("Times New Roman", Font.PLAIN, medSize));
 		ResetCriteriaButton.addActionListener(new ResetButtonActionListener(this));
+		ResetCriteriaButton.setBackground(Color.WHITE);
 		
 		GroupLayout gl_searchPane = new GroupLayout(this);
 		gl_searchPane.setHorizontalGroup(
