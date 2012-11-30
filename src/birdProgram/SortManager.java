@@ -13,17 +13,17 @@ abstract public class SortManager {
 	 */
 	public static List<Bird> getSortedBirds(List<Bird> birds, String sortCategory){
 		List<Bird> sorted = birds;
-		if(sortCategory == "name"){
+		if(sortCategory.equals("name")){
 			sorted = getSortedByName(sorted);
-		}else if(sortCategory == "family"){
+		}else if(sortCategory.equals("family")){
 			sorted = getSortedByFamily(sorted);
-		}else if(sortCategory == "location"){
+		}else if(sortCategory.equals("location")){
 			sorted= getSortedByLocation(sorted);
-		}else if(sortCategory == "color"){
+		}else if(sortCategory.equals("color")){
 			sorted = getSortedByColor(sorted);
-		}else if(sortCategory == "size"){
+		}else if(sortCategory.equals("size")){
 			sorted = getSortedBySize(sorted);
-		}else if(sortCategory == "timeActive"){
+		}else if(sortCategory.equals("timeActive")){
 			sorted = getSortedByTimeActive(sorted);
 		}
 		return sorted;
