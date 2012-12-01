@@ -126,6 +126,12 @@ public class ResultsPane extends JPanel {
 			ParallelGroup horizontal = gl_birdsBlock.createParallelGroup(Alignment.LEADING);
 			SequentialGroup vertical = gl_birdsBlock.createSequentialGroup();
 			List<Bird> results = SortManager.getSortedBirds(last.getBirds(), sortCategory);
+			if(results.isEmpty()){
+				JLabel NoResults = new JLabel("No Results Found.");
+				NoResults.setFont(new Font("TimesNewRoman", Font.PLAIN, smallSize*2));
+				horizontal.addComponent(NoResults, (int)currScreen.getWidth() - 50, (int)currScreen.getWidth() - 50, (int)currScreen.getWidth() - 50);
+				vertical.addComponent(NoResults, largeSize*5, largeSize*5, largeSize*5);
+			}
 			for(Bird b: results){
 				JPanel birdBox = makeBirdBox(b);
 				birdBox.setBackground(background);
