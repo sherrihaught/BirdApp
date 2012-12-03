@@ -1,5 +1,6 @@
 package birdProgram;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class Bird {
@@ -10,9 +11,10 @@ public class Bird {
 	private BirdSize size;
 	private BirdDescription description;
 	private List<BirdTimeActive> timeActive;
+	private BufferedImage image;
 	
 	public Bird(BirdName name, List<BirdFamily> families, List<BirdColor> colors, List<BirdLocation> locations, 
-			 BirdSize size, List<BirdTimeActive> timeActive, BirdDescription description){
+			 BirdSize size, List<BirdTimeActive> timeActive, BirdDescription description, BufferedImage image){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
@@ -20,6 +22,7 @@ public class Bird {
 		this.size = size;
 		this.description = description;
 		this.timeActive = timeActive;
+		this.image = image;
 	}
 
 //--get methods---------------------------
@@ -51,6 +54,10 @@ public class Bird {
 		return timeActive;
 	}
 	
+	public BufferedImage getBirdImage(){
+		return image;
+	}
+	
 //--set methods---------------------------
 	public void setName(BirdName name){
 		this.name = name;
@@ -78,6 +85,10 @@ public class Bird {
 	
 	public void setTimeActive(List<BirdTimeActive> timeActive){
 		this.timeActive = timeActive;
+	}
+	
+	public void setBirdImage(BufferedImage image){
+		this.image = image;
 	}
 	
 	public String toString(){
