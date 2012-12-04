@@ -2,6 +2,7 @@ package birdProgram;
 
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -96,31 +97,56 @@ public class Controller {
 	public void setFavorite(Bird bird, boolean favorite) {
 		if(favorite){
 			if(!isFavorite(bird)){
-				favs.addFavorite(bird);
+				favs.addFavorite(bird.getName());
+				//System.out.println("Adding BirdName: " + bird.getName());
 			}
 		}else{
 			if(isFavorite(bird)){
-				favs.removeFavorite(bird);
+				favs.removeFavorite(bird.getName());
+				//System.out.println("Removing BirdName: " + bird.getName());
 			}
 		}
+		favs.serializationOfFavorites();
+	}
+	
+	public boolean isFavorite(BirdName n){
+		for(int j=0;j<favs.getFavorites().size();j++){
+			if(favs.getFavorites().get(j).equals(n))
+				return true;
+		}
+		return false;
 	}
 	
 	public boolean isFavorite(Bird b){
-		List<Bird> favorites = favs.getFavorites();
-		for(Bird fav : favorites){
-			if(fav.equals(b)){
+		for(int j=0;j<favs.getFavorites().size();j++){
+			if(favs.getFavorites().get(j).equals(b.getName()))
 				return true;
-			}
 		}
 		return false;
 	}
 	
 	public List<Bird> getFavorites(){
-		return favs.getFavorites();
+		List<Bird> tempFavs = new ArrayList<Bird>();
+		for(int i=0;i<birds.getBirds().size();i++){
+			for(int j=0;j<favs.getFavorites().size();j++){
+				if(birds.getBirds().get(i).getName().equals(favs.getFavorites().get(j)))
+					tempFavs.add(birds.getBirds().get(i));
+			}
+		}
+		//System.out.println("tempFavs:" +tempFavs.toString());
+		return tempFavs;
 	}
 	
 	public ResultsPane getResultsPane(){
-		return ((BackgroundFrame) frame).getResultsPane();
+		ResultsPane pane = null;
+		try{
+			pane = ((BackgroundFrame) frame).getResultsPane();
+		}
+		catch(Exception e){
+			System.out.println("Error in getResultsPane():" + e.toString());
+		}
+		
+		return pane;
 	}
 	
 	

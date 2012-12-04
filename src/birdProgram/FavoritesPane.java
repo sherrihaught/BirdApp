@@ -116,6 +116,9 @@ public class FavoritesPane extends JPanel {
 	
 	public void displayFavorites(){
 		List<Bird> favorites = SortManager.getSortedBirds(c.getFavorites(), sortCategory);
+		
+		//System.out.println("favorites inside pane: " + c.getFavorites());
+		
 		if(favorites != null){ //if no favorites, empty panel is displayed
 			gl_favoritesPane.removeLayoutComponent(favs);
 			favs.removeAll();
