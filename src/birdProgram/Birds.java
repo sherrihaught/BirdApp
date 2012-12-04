@@ -1,7 +1,5 @@
 package birdProgram;
 
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,7 +59,6 @@ public class Birds {
 			BufferedImage image = null;
 			try {
 				image = ImageIO.read(new File(inputFile.nextLine()));
-				image = scaleImage(image);									// scale image prior to adding to bird
 			} catch (IOException e){
 				// image remains null if nextLine is empty
 			}
@@ -73,20 +70,5 @@ public class Birds {
 	
 	public List<Bird> getBirds(){
 		return birds;
-	}
-	
-	public BufferedImage scaleImage(BufferedImage image)
-	{
-		BufferedImage scaledImage = new BufferedImage(200, 200,
-			BufferedImage.TYPE_BYTE_INDEXED);
-
-	    AffineTransform tx = new AffineTransform();
-	    tx.scale(3, 3);
-
-	    AffineTransformOp op = new AffineTransformOp(tx,
-	    	AffineTransformOp.TYPE_BILINEAR);
-	    scaledImage = op.filter(image, null);
-		
-		return scaledImage;
 	}
 }

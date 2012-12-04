@@ -1,5 +1,6 @@
 package birdProgram;
 
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Vector;
@@ -67,6 +68,15 @@ public class Controller {
 		if(switchTo){
 			((BackgroundFrame) frame).switchPane(2);
 		}
+	}
+	
+	public BufferedImage getImage(Bird bird){
+		for(Bird b: birds.getBirds()){
+			if(b == bird){
+				return b.getBirdImage();
+			}
+		}
+		return null;
 	}
 	
 	public void setBird(Bird bird){
