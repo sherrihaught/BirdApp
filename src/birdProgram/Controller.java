@@ -103,6 +103,7 @@ public class Controller {
 				favs.removeFavorite(bird);
 			}
 		}
+		favs.serializationOfFavorites();
 	}
 	
 	public boolean isFavorite(Bird b){

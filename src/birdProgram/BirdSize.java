@@ -3,6 +3,8 @@ package birdProgram;
 
 public class BirdSize extends BirdAttribute
 {
+	private static final long serialVersionUID = 1L;
+
 	public BirdSize(String size){
 		super(size); //hah
 	}

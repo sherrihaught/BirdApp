@@ -1,12 +1,19 @@
 package birdProgram;
 
+import java.io.Serializable;
 
-public class BirdAttribute {
+
+public class BirdAttribute implements Serializable {
+	private static final long serialVersionUID = 6270622143613159354L;
 	
 	private String attributeName;
 
 	public BirdAttribute(String attributeName){
 		set(attributeName);
+	}
+	
+	public BirdAttribute() {
+
 	}
 	
 	public String toString(){

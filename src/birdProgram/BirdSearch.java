@@ -1,8 +1,13 @@
 package birdProgram;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BirdSearch{
+public class BirdSearch implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4861779595719286972L;
 	private List<Bird> results;
 	
 	/**

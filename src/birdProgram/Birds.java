@@ -1,13 +1,10 @@
 package birdProgram;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import javax.imageio.ImageIO;
 
 
 public class Birds {
@@ -56,14 +53,10 @@ public class Birds {
 			
 			BirdDescription description = new BirdDescription(inputFile.nextLine());
 			
-			BufferedImage image = null;
-			try {
-				image = ImageIO.read(new File(inputFile.nextLine()));
-			} catch (IOException e){
-				// image remains null if nextLine is empty
-			}
+			String imageLocation = inputFile.nextLine();
 			
-			birds.add(new Bird(name, familiesList, colorsList, locationsList, size, timeActiveList, description, image));
+			
+			birds.add(new Bird(name, familiesList, colorsList, locationsList, size, timeActiveList, description, imageLocation));
 		}
 		inputFile.close();
 	}

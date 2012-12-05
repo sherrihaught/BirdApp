@@ -35,7 +35,7 @@ public class FavoritesPane extends JPanel {
 		favs = new JPanel();
 		favs.setBackground(background);
 		sortCategory = "name";
-		
+
 		smallSize = (int)currScreen.getWidth()/110;
 		largeSize = (int)currScreen.getWidth()/80;
 		
@@ -123,7 +123,7 @@ public class FavoritesPane extends JPanel {
 			ParallelGroup horizontal = gl_birdsBlock.createParallelGroup(Alignment.LEADING);
 			SequentialGroup vertical = gl_birdsBlock.createSequentialGroup();
 			for(Bird b: favorites){
-				JPanel birdBox = c.getResultsPane().makeBirdBox(b);
+				JPanel birdBox = MakeBirdBox.makeBirdBox(b, currScreen, c);
 				birdBox.setBackground(background);
 				horizontal.addComponent(birdBox, (int)currScreen.getWidth()-50, (int)currScreen.getWidth()-50, (int)currScreen.getWidth()-50);
 				vertical.addGap(20).addComponent(birdBox, largeSize*5+2, largeSize*5+2, largeSize*5+2);

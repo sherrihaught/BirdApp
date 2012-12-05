@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+
 import java.awt.Font;
 
 public class BackgroundFrame extends JFrame {
@@ -14,7 +15,7 @@ public class BackgroundFrame extends JFrame {
 	private BirdPane birdPane;
 	private FavoritesPane favoritesPane;
 
-	public BackgroundFrame(Controller c) {		
+	public BackgroundFrame(Controller c) {	
 		setResizable(false);
 		Dimension currScreen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

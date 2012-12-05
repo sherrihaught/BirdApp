@@ -1,9 +1,18 @@
 package birdProgram;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public class Bird {
+import javax.imageio.ImageIO;
+
+public class Bird implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2049983782365439512L;
 	private BirdName name;
 	private List<BirdFamily> families;
 	private List<BirdLocation> locations;
@@ -11,10 +20,10 @@ public class Bird {
 	private BirdSize size;
 	private BirdDescription description;
 	private List<BirdTimeActive> timeActive;
-	private BufferedImage image;
+	private String imageLocation;
 	
 	public Bird(BirdName name, List<BirdFamily> families, List<BirdColor> colors, List<BirdLocation> locations, 
-			 BirdSize size, List<BirdTimeActive> timeActive, BirdDescription description, BufferedImage image){
+			 BirdSize size, List<BirdTimeActive> timeActive, BirdDescription description, String imageLocation){
 		this.name = name;
 		this.families = families;
 		this.locations = locations;
@@ -22,7 +31,7 @@ public class Bird {
 		this.size = size;
 		this.description = description;
 		this.timeActive = timeActive;
-		this.image = image;
+		this.imageLocation = imageLocation;
 	}
 
 //--get methods---------------------------
@@ -55,7 +64,17 @@ public class Bird {
 	}
 	
 	public BufferedImage getBirdImage(){
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File(imageLocation));
+		} catch (IOException e){
+			// image remains null if nextLine is empty
+		}
 		return image;
+	}
+	
+	public String getImageLocation(){
+		return imageLocation;
 	}
 	
 //--set methods---------------------------
@@ -87,8 +106,8 @@ public class Bird {
 		this.timeActive = timeActive;
 	}
 	
-	public void setBirdImage(BufferedImage image){
-		this.image = image;
+	public void setImageLocation(String imageLocation){
+		this.imageLocation = imageLocation;
 	}
 	
 	public String toString(){
