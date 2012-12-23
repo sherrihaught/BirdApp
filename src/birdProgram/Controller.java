@@ -72,7 +72,7 @@ public class Controller {
 	
 	public BufferedImage getImage(Bird bird){
 		for(Bird b: birds.getBirds()){
-			if(b == bird){
+			if(b.getName().equals(bird.getName())){
 				return b.getBirdImage();
 			}
 		}

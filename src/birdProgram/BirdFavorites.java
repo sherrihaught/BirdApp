@@ -35,7 +35,7 @@ public class BirdFavorites  {
 			FileInputStream fis = new FileInputStream("favorites"); 
 			ObjectInputStream ois = new ObjectInputStream(fis); 
 			favorites = (ArrayList<Bird>)ois.readObject(); 
-			ois.close(); 
+			ois.close();
 		} 
 		catch(Exception e) { 
 			System.out.println("Exception during deserialization: " + e); 
